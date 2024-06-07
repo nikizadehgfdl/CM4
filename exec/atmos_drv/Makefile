@@ -1,6 +1,6 @@
-# Makefile created by mkmf 19.3.0
+# Makefile created by mkmf 2022.01.00
 
-CPPDEFS = -DINTERNAL_FILE_NML -g -DCLIMATE_NUDGE -DSPMD 
+CPPDEFS = -DINTERNAL_FILE_NML -g -DCLIMATE_NUDGE -DSPMD
 
 OTHERFLAGS = -I$(BUILDROOT)atmos_cubed_sphere -I$(BUILDROOT)atmos_phys -I$(BUILDROOT)fms/build/.mods -I$(SRCROOT)FMS/include
 
@@ -11,7 +11,7 @@ include $(MK_TEMPLATE)
 
 .DEFAULT:
 	-echo $@ does not exist.
-all: libatmos_dyn.a
+all: libatmos_drv.a
 atmos_model.o: $(SRCROOT)atmos_drivers/coupled/atmos_model.F90 $(SRCROOT)FMS/include/file_version.h
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c -I$(SRCROOT)FMS/include	$(SRCROOT)atmos_drivers/coupled/atmos_model.F90
 ./atmos_model.F90: $(SRCROOT)atmos_drivers/coupled/atmos_model.F90
@@ -22,10 +22,10 @@ SRC = $(SRCROOT)atmos_drivers/coupled/atmos_model.F90 $(SRCROOT)FMS/include/file
 OBJ = atmos_model.o
 OFF = $(SRCROOT)atmos_drivers/coupled/atmos_model.F90 $(SRCROOT)FMS/include/file_version.h
 clean: neat
-	-rm -f .libatmos_dyn.a.cppdefs  libatmos_dyn.a *.mod *.o
+	-rm -f .libatmos_drv.a.cppdefs $(OBJ) libatmos_drv.a
 
 neat:
-	-rm -f $(TMPFILES) *.mod
+	-rm -f $(TMPFILES)
 
 localize: $(OFF)
 	cp $(OFF) .
@@ -36,6 +36,6 @@ TAGS: $(SRC)
 tags: $(SRC)
 	ctags $(SRC)
 
-libatmos_dyn.a: $(OBJ)
-	$(AR) $(ARFLAGS) libatmos_dyn.a $(OBJ)
+libatmos_drv.a: $(OBJ)
+	$(AR) $(ARFLAGS) libatmos_drv.a $(OBJ)
 
