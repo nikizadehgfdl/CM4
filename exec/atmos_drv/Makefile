@@ -14,13 +14,13 @@ include $(MK_TEMPLATE)
 all: libatmos_drv.a
 atmos_model.o: $(SRCROOT)atmos_drivers/coupled/atmos_model.F90 $(SRCROOT)FMS/include/file_version.h
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c -I$(SRCROOT)FMS/include	$(SRCROOT)atmos_drivers/coupled/atmos_model.F90
-./atmos_model.F90: $(SRCROOT)atmos_drivers/coupled/atmos_model.F90
-	cp $(SRCROOT)atmos_drivers/coupled/atmos_model.F90 .
 ./file_version.h: $(SRCROOT)FMS/include/file_version.h
 	cp $(SRCROOT)FMS/include/file_version.h .
+./atmos_model.F90: $(SRCROOT)atmos_drivers/coupled/atmos_model.F90
+	cp $(SRCROOT)atmos_drivers/coupled/atmos_model.F90 .
 SRC = $(SRCROOT)atmos_drivers/coupled/atmos_model.F90 $(SRCROOT)FMS/include/file_version.h
 OBJ = atmos_model.o
-OFF = $(SRCROOT)atmos_drivers/coupled/atmos_model.F90 $(SRCROOT)FMS/include/file_version.h
+OFF = $(SRCROOT)FMS/include/file_version.h $(SRCROOT)atmos_drivers/coupled/atmos_model.F90
 clean: neat
 	-rm -f .libatmos_drv.a.cppdefs $(OBJ) libatmos_drv.a
 

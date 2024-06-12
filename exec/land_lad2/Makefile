@@ -6,6 +6,7 @@ OTHERFLAGS = -I$(BUILDROOT)fms/build/.mods
 
 include $(MK_TEMPLATE)
 
+
 .DEFAULT:
 	-echo $@ does not exist.
 all: libland_lad2.a
@@ -213,123 +214,123 @@ vegn_tile.o: $(SRCROOT)land_lad2/vegetation/vegn_tile.F90 $(SRCROOT)land_lad2/to
 	$(eval preproc := $(addsuffix .DO_NOT_MODIFY.f90,$(basename $(notdir $<))))
 	cpp -nostdinc -C -v $(CPPDEFS) $(CPPFLAGS) $< > $(preproc) -I$(SRCROOT)land_lad2/topo_rough/../shared
 	$(FC) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c -o $@ 	$(preproc)
-./vegn_tile.F90: $(SRCROOT)land_lad2/vegetation/vegn_tile.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_tile.F90 .
-./vegn_photosynthesis.F90: $(SRCROOT)land_lad2/vegetation/vegn_photosynthesis.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_photosynthesis.F90 .
-./debug.inc: $(SRCROOT)land_lad2/shared/debug.inc
-	cp $(SRCROOT)land_lad2/shared/debug.inc .
-./version_variable.inc: $(SRCROOT)land_lad2/shared/version_variable.inc
-	cp $(SRCROOT)land_lad2/shared/version_variable.inc .
-./land_utils.F90: $(SRCROOT)land_lad2/shared/land_utils.F90
-	cp $(SRCROOT)land_lad2/shared/land_utils.F90 .
-./vegn_radiation.F90: $(SRCROOT)land_lad2/vegetation/vegn_radiation.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_radiation.F90 .
-./river_physics.F90: $(SRCROOT)land_lad2/river/river_physics.F90
-	cp $(SRCROOT)land_lad2/river/river_physics.F90 .
-./sphum.F90: $(SRCROOT)land_lad2/shared/sphum.F90
-	cp $(SRCROOT)land_lad2/shared/sphum.F90 .
-./table_printer.F90: $(SRCROOT)land_lad2/shared/table_printer.F90
-	cp $(SRCROOT)land_lad2/shared/table_printer.F90 .
-./vegn_harvesting.F90: $(SRCROOT)land_lad2/vegetation/vegn_harvesting.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_harvesting.F90 .
-./vegn_dynamics.F90: $(SRCROOT)land_lad2/vegetation/vegn_dynamics.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_dynamics.F90 .
-./land_tile_diag_buff.F90: $(SRCROOT)land_lad2/shared/land_tile_diag_buff.F90
-	cp $(SRCROOT)land_lad2/shared/land_tile_diag_buff.F90 .
-./soil_tile.F90: $(SRCROOT)land_lad2/soil/soil_tile.F90
-	cp $(SRCROOT)land_lad2/soil/soil_tile.F90 .
-./land_tile.F90: $(SRCROOT)land_lad2/land_tile.F90
-	cp $(SRCROOT)land_lad2/land_tile.F90 .
-./tiling_input.F90: $(SRCROOT)land_lad2/predefined_tiles/tiling_input.F90
-	cp $(SRCROOT)land_lad2/predefined_tiles/tiling_input.F90 .
-./land_tracers.F90: $(SRCROOT)land_lad2/land_tracers/land_tracers.F90
-	cp $(SRCROOT)land_lad2/land_tracers/land_tracers.F90 .
-./soil.F90: $(SRCROOT)land_lad2/soil/soil.F90
-	cp $(SRCROOT)land_lad2/soil/soil.F90 .
-./land_tile_diag.F90: $(SRCROOT)land_lad2/shared/land_tile_diag.F90
-	cp $(SRCROOT)land_lad2/shared/land_tile_diag.F90 .
-./glac_tile.F90: $(SRCROOT)land_lad2/glacier/glac_tile.F90
-	cp $(SRCROOT)land_lad2/glacier/glac_tile.F90 .
-./land_tile_io.F90: $(SRCROOT)land_lad2/shared/land_tile_io.F90
-	cp $(SRCROOT)land_lad2/shared/land_tile_io.F90 .
-./land_model.F90: $(SRCROOT)land_lad2/land_model.F90
-	cp $(SRCROOT)land_lad2/land_model.F90 .
-./vegn_cohort.F90: $(SRCROOT)land_lad2/vegetation/vegn_cohort.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_cohort.F90 .
-./land_chksum.F90: $(SRCROOT)land_lad2/land_chksum.F90
-	cp $(SRCROOT)land_lad2/land_chksum.F90 .
-./topo_rough.F90: $(SRCROOT)land_lad2/topo_rough/topo_rough.F90
-	cp $(SRCROOT)land_lad2/topo_rough/topo_rough.F90 .
-./lake.F90: $(SRCROOT)land_lad2/lake/lake.F90
-	cp $(SRCROOT)land_lad2/lake/lake.F90 .
-./land_tile_diag_sel.F90: $(SRCROOT)land_lad2/shared/land_tile_diag_sel.F90
-	cp $(SRCROOT)land_lad2/shared/land_tile_diag_sel.F90 .
-./land_data.F90: $(SRCROOT)land_lad2/land_data.F90
-	cp $(SRCROOT)land_lad2/land_data.F90 .
-./snow.F90: $(SRCROOT)land_lad2/snow/snow.F90
-	cp $(SRCROOT)land_lad2/snow/snow.F90 .
-./canopy_air.F90: $(SRCROOT)land_lad2/canopy_air/canopy_air.F90
-	cp $(SRCROOT)land_lad2/canopy_air/canopy_air.F90 .
-./read_remap_cohort_data_new.inc: $(SRCROOT)land_lad2/vegetation/read_remap_cohort_data_new.inc
-	cp $(SRCROOT)land_lad2/vegetation/read_remap_cohort_data_new.inc .
-./land_debug.F90: $(SRCROOT)land_lad2/shared/land_debug.F90
-	cp $(SRCROOT)land_lad2/shared/land_debug.F90 .
-./river_type.F90: $(SRCROOT)land_lad2/river/river_type.F90
-	cp $(SRCROOT)land_lad2/river/river_type.F90 .
-./river.F90: $(SRCROOT)land_lad2/river/river.F90
-	cp $(SRCROOT)land_lad2/river/river.F90 .
-./hillslope.F90: $(SRCROOT)land_lad2/soil/hillslope.F90
-	cp $(SRCROOT)land_lad2/soil/hillslope.F90 .
-./cana_tile.F90: $(SRCROOT)land_lad2/canopy_air/cana_tile.F90
-	cp $(SRCROOT)land_lad2/canopy_air/cana_tile.F90 .
-./soil_carbon.F90: $(SRCROOT)land_lad2/soil/soil_carbon.F90
-	cp $(SRCROOT)land_lad2/soil/soil_carbon.F90 .
-./vegn_static_override.F90: $(SRCROOT)land_lad2/vegetation/vegn_static_override.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_static_override.F90 .
-./land_io.F90: $(SRCROOT)land_lad2/shared/land_io.F90
-	cp $(SRCROOT)land_lad2/shared/land_io.F90 .
-./vegn_disturbance.F90: $(SRCROOT)land_lad2/vegetation/vegn_disturbance.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_disturbance.F90 .
 ./hillslope_tile.F90: $(SRCROOT)land_lad2/soil/hillslope_tile.F90
 	cp $(SRCROOT)land_lad2/soil/hillslope_tile.F90 .
+./land_tile_diag.F90: $(SRCROOT)land_lad2/shared/land_tile_diag.F90
+	cp $(SRCROOT)land_lad2/shared/land_tile_diag.F90 .
+./land_utils.F90: $(SRCROOT)land_lad2/shared/land_utils.F90
+	cp $(SRCROOT)land_lad2/shared/land_utils.F90 .
 ./tiling_input_types.F90: $(SRCROOT)land_lad2/predefined_tiles/tiling_input_types.F90
 	cp $(SRCROOT)land_lad2/predefined_tiles/tiling_input_types.F90 .
+./lake.F90: $(SRCROOT)land_lad2/lake/lake.F90
+	cp $(SRCROOT)land_lad2/lake/lake.F90 .
+./land_tile_diag_buff.F90: $(SRCROOT)land_lad2/shared/land_tile_diag_buff.F90
+	cp $(SRCROOT)land_lad2/shared/land_tile_diag_buff.F90 .
+./soil_carbon.F90: $(SRCROOT)land_lad2/soil/soil_carbon.F90
+	cp $(SRCROOT)land_lad2/soil/soil_carbon.F90 .
+./glac_tile.F90: $(SRCROOT)land_lad2/glacier/glac_tile.F90
+	cp $(SRCROOT)land_lad2/glacier/glac_tile.F90 .
 ./glacier.F90: $(SRCROOT)land_lad2/glacier/glacier.F90
 	cp $(SRCROOT)land_lad2/glacier/glacier.F90 .
 ./fms_platform.h: $(SRCROOT)FMS/include/fms_platform.h
 	cp $(SRCROOT)FMS/include/fms_platform.h .
-./debug.inc: $(SRCROOT)land_lad2/topo_rough/../shared/debug.inc
-	cp $(SRCROOT)land_lad2/topo_rough/../shared/debug.inc .
-./land_dust.F90: $(SRCROOT)land_lad2/land_tracers/land_dust.F90
-	cp $(SRCROOT)land_lad2/land_tracers/land_dust.F90 .
-./version_variable.inc: $(SRCROOT)land_lad2/topo_rough/../shared/version_variable.inc
-	cp $(SRCROOT)land_lad2/topo_rough/../shared/version_variable.inc .
 ./vegn_data.F90: $(SRCROOT)land_lad2/vegetation/vegn_data.F90
 	cp $(SRCROOT)land_lad2/vegetation/vegn_data.F90 .
-./vegetation.F90: $(SRCROOT)land_lad2/vegetation/vegetation.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegetation.F90 .
-./uptake.F90: $(SRCROOT)land_lad2/soil/uptake.F90
-	cp $(SRCROOT)land_lad2/soil/uptake.F90 .
-./vegn_cohort_io.F90: $(SRCROOT)land_lad2/vegetation/vegn_cohort_io.F90
-	cp $(SRCROOT)land_lad2/vegetation/vegn_cohort_io.F90 .
-./transitions.F90: $(SRCROOT)land_lad2/transitions/transitions.F90
-	cp $(SRCROOT)land_lad2/transitions/transitions.F90 .
-./snow_tile.F90: $(SRCROOT)land_lad2/snow/snow_tile.F90
-	cp $(SRCROOT)land_lad2/snow/snow_tile.F90 .
+./vegn_radiation.F90: $(SRCROOT)land_lad2/vegetation/vegn_radiation.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_radiation.F90 .
+./soil_tile.F90: $(SRCROOT)land_lad2/soil/soil_tile.F90
+	cp $(SRCROOT)land_lad2/soil/soil_tile.F90 .
 ./lake_tile.F90: $(SRCROOT)land_lad2/lake/lake_tile.F90
 	cp $(SRCROOT)land_lad2/lake/lake_tile.F90 .
+./debug.inc: $(SRCROOT)land_lad2/shared/debug.inc
+	cp $(SRCROOT)land_lad2/shared/debug.inc .
+./vegetation.F90: $(SRCROOT)land_lad2/vegetation/vegetation.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegetation.F90 .
+./vegn_cohort_io.F90: $(SRCROOT)land_lad2/vegetation/vegn_cohort_io.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_cohort_io.F90 .
+./uptake.F90: $(SRCROOT)land_lad2/soil/uptake.F90
+	cp $(SRCROOT)land_lad2/soil/uptake.F90 .
 ./hillslope_hydrology.F90: $(SRCROOT)land_lad2/soil/hillslope_hydrology.F90
 	cp $(SRCROOT)land_lad2/soil/hillslope_hydrology.F90 .
-./land_numerics.F90: $(SRCROOT)land_lad2/shared/land_numerics.F90
-	cp $(SRCROOT)land_lad2/shared/land_numerics.F90 .
-./land_tracer_driver.F90: $(SRCROOT)land_lad2/land_tracers/land_tracer_driver.F90
-	cp $(SRCROOT)land_lad2/land_tracers/land_tracer_driver.F90 .
+./vegn_tile.F90: $(SRCROOT)land_lad2/vegetation/vegn_tile.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_tile.F90 .
+./sphum.F90: $(SRCROOT)land_lad2/shared/sphum.F90
+	cp $(SRCROOT)land_lad2/shared/sphum.F90 .
+./tiling_input.F90: $(SRCROOT)land_lad2/predefined_tiles/tiling_input.F90
+	cp $(SRCROOT)land_lad2/predefined_tiles/tiling_input.F90 .
+./land_io.F90: $(SRCROOT)land_lad2/shared/land_io.F90
+	cp $(SRCROOT)land_lad2/shared/land_io.F90 .
+./hillslope.F90: $(SRCROOT)land_lad2/soil/hillslope.F90
+	cp $(SRCROOT)land_lad2/soil/hillslope.F90 .
+./river_physics.F90: $(SRCROOT)land_lad2/river/river_physics.F90
+	cp $(SRCROOT)land_lad2/river/river_physics.F90 .
+./vegn_dynamics.F90: $(SRCROOT)land_lad2/vegetation/vegn_dynamics.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_dynamics.F90 .
+./debug.inc: $(SRCROOT)land_lad2/topo_rough/../shared/debug.inc
+	cp $(SRCROOT)land_lad2/topo_rough/../shared/debug.inc .
+./river_type.F90: $(SRCROOT)land_lad2/river/river_type.F90
+	cp $(SRCROOT)land_lad2/river/river_type.F90 .
+./vegn_cohort.F90: $(SRCROOT)land_lad2/vegetation/vegn_cohort.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_cohort.F90 .
+./land_debug.F90: $(SRCROOT)land_lad2/shared/land_debug.F90
+	cp $(SRCROOT)land_lad2/shared/land_debug.F90 .
+./read_remap_cohort_data_new.inc: $(SRCROOT)land_lad2/vegetation/read_remap_cohort_data_new.inc
+	cp $(SRCROOT)land_lad2/vegetation/read_remap_cohort_data_new.inc .
+./snow_tile.F90: $(SRCROOT)land_lad2/snow/snow_tile.F90
+	cp $(SRCROOT)land_lad2/snow/snow_tile.F90 .
+./cana_tile.F90: $(SRCROOT)land_lad2/canopy_air/cana_tile.F90
+	cp $(SRCROOT)land_lad2/canopy_air/cana_tile.F90 .
+./topo_rough.F90: $(SRCROOT)land_lad2/topo_rough/topo_rough.F90
+	cp $(SRCROOT)land_lad2/topo_rough/topo_rough.F90 .
+./table_printer.F90: $(SRCROOT)land_lad2/shared/table_printer.F90
+	cp $(SRCROOT)land_lad2/shared/table_printer.F90 .
+./soil.F90: $(SRCROOT)land_lad2/soil/soil.F90
+	cp $(SRCROOT)land_lad2/soil/soil.F90 .
+./snow.F90: $(SRCROOT)land_lad2/snow/snow.F90
+	cp $(SRCROOT)land_lad2/snow/snow.F90 .
+./vegn_photosynthesis.F90: $(SRCROOT)land_lad2/vegetation/vegn_photosynthesis.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_photosynthesis.F90 .
+./land_dust.F90: $(SRCROOT)land_lad2/land_tracers/land_dust.F90
+	cp $(SRCROOT)land_lad2/land_tracers/land_dust.F90 .
+./river.F90: $(SRCROOT)land_lad2/river/river.F90
+	cp $(SRCROOT)land_lad2/river/river.F90 .
+./land_data.F90: $(SRCROOT)land_lad2/land_data.F90
+	cp $(SRCROOT)land_lad2/land_data.F90 .
+./vegn_disturbance.F90: $(SRCROOT)land_lad2/vegetation/vegn_disturbance.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_disturbance.F90 .
+./land_tile_io.F90: $(SRCROOT)land_lad2/shared/land_tile_io.F90
+	cp $(SRCROOT)land_lad2/shared/land_tile_io.F90 .
+./land_chksum.F90: $(SRCROOT)land_lad2/land_chksum.F90
+	cp $(SRCROOT)land_lad2/land_chksum.F90 .
+./land_tile.F90: $(SRCROOT)land_lad2/land_tile.F90
+	cp $(SRCROOT)land_lad2/land_tile.F90 .
+./vegn_harvesting.F90: $(SRCROOT)land_lad2/vegetation/vegn_harvesting.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_harvesting.F90 .
+./land_tile_diag_sel.F90: $(SRCROOT)land_lad2/shared/land_tile_diag_sel.F90
+	cp $(SRCROOT)land_lad2/shared/land_tile_diag_sel.F90 .
 ./land_constants.F90: $(SRCROOT)land_lad2/land_constants.F90
 	cp $(SRCROOT)land_lad2/land_constants.F90 .
-SRC = $(SRCROOT)land_lad2/river/river_type.F90 $(SRCROOT)land_lad2/land_constants.F90 $(SRCROOT)land_lad2/river/river_physics.F90 $(SRCROOT)land_lad2/vegetation/vegn_cohort.F90 $(SRCROOT)land_lad2/topo_rough/topo_rough.F90 $(SRCROOT)land_lad2/shared/table_printer.F90 $(SRCROOT)land_lad2/glacier/glac_tile.F90 $(SRCROOT)land_lad2/shared/land_numerics.F90 $(SRCROOT)land_lad2/land_tracers/land_tracers.F90 $(SRCROOT)land_lad2/predefined_tiles/tiling_input.F90 $(SRCROOT)land_lad2/soil/soil_tile.F90 $(SRCROOT)land_lad2/land_data.F90 $(SRCROOT)land_lad2/vegetation/vegn_harvesting.F90 $(SRCROOT)land_lad2/shared/sphum.F90 $(SRCROOT)land_lad2/shared/land_tile_diag.F90 $(SRCROOT)land_lad2/vegetation/vegn_dynamics.F90 $(SRCROOT)land_lad2/land_model.F90 $(SRCROOT)land_lad2/soil/hillslope.F90 $(SRCROOT)land_lad2/transitions/transitions.F90 $(SRCROOT)land_lad2/shared/land_io.F90 $(SRCROOT)land_lad2/land_tracers/land_tracer_driver.F90 $(SRCROOT)land_lad2/canopy_air/canopy_air.F90 $(SRCROOT)land_lad2/soil/soil.F90 $(SRCROOT)land_lad2/vegetation/vegn_photosynthesis.F90 $(SRCROOT)land_lad2/land_tile.F90 $(SRCROOT)land_lad2/shared/land_tile_io.F90 $(SRCROOT)land_lad2/river/river.F90 $(SRCROOT)land_lad2/shared/land_tile_diag_sel.F90 $(SRCROOT)land_lad2/vegetation/vegetation.F90 $(SRCROOT)land_lad2/soil/hillslope_tile.F90 $(SRCROOT)land_lad2/shared/land_debug.F90 $(SRCROOT)land_lad2/vegetation/vegn_cohort_io.F90 $(SRCROOT)land_lad2/glacier/glacier.F90 $(SRCROOT)land_lad2/lake/lake.F90 $(SRCROOT)land_lad2/snow/snow_tile.F90 $(SRCROOT)land_lad2/vegetation/vegn_tile.F90 $(SRCROOT)land_lad2/vegetation/vegn_static_override.F90 $(SRCROOT)land_lad2/land_chksum.F90 $(SRCROOT)land_lad2/soil/uptake.F90 $(SRCROOT)land_lad2/vegetation/vegn_disturbance.F90 $(SRCROOT)land_lad2/soil/hillslope_hydrology.F90 $(SRCROOT)land_lad2/land_tracers/land_dust.F90 $(SRCROOT)land_lad2/predefined_tiles/tiling_input_types.F90 $(SRCROOT)land_lad2/vegetation/vegn_radiation.F90 $(SRCROOT)land_lad2/snow/snow.F90 $(SRCROOT)land_lad2/lake/lake_tile.F90 $(SRCROOT)land_lad2/shared/land_utils.F90 $(SRCROOT)land_lad2/vegetation/vegn_data.F90 $(SRCROOT)land_lad2/shared/land_tile_diag_buff.F90 $(SRCROOT)land_lad2/soil/soil_carbon.F90 $(SRCROOT)land_lad2/canopy_air/cana_tile.F90 $(SRCROOT)land_lad2/shared/debug.inc $(SRCROOT)land_lad2/shared/version_variable.inc $(SRCROOT)land_lad2/topo_rough/../shared/debug.inc $(SRCROOT)land_lad2/topo_rough/../shared/version_variable.inc $(SRCROOT)land_lad2/vegetation/read_remap_cohort_data_new.inc $(SRCROOT)FMS/include/fms_platform.h
-OBJ = river_type.o land_constants.o river_physics.o vegn_cohort.o topo_rough.o table_printer.o glac_tile.o land_numerics.o land_tracers.o tiling_input.o soil_tile.o land_data.o vegn_harvesting.o sphum.o land_tile_diag.o vegn_dynamics.o land_model.o hillslope.o transitions.o land_io.o land_tracer_driver.o canopy_air.o soil.o vegn_photosynthesis.o land_tile.o land_tile_io.o river.o land_tile_diag_sel.o vegetation.o hillslope_tile.o land_debug.o vegn_cohort_io.o glacier.o lake.o snow_tile.o vegn_tile.o vegn_static_override.o land_chksum.o uptake.o vegn_disturbance.o hillslope_hydrology.o land_dust.o tiling_input_types.o vegn_radiation.o snow.o lake_tile.o land_utils.o vegn_data.o land_tile_diag_buff.o soil_carbon.o cana_tile.o
-OFF = $(SRCROOT)land_lad2/vegetation/vegn_tile.F90 $(SRCROOT)land_lad2/vegetation/vegn_photosynthesis.F90 $(SRCROOT)land_lad2/shared/debug.inc $(SRCROOT)land_lad2/shared/version_variable.inc $(SRCROOT)land_lad2/shared/land_utils.F90 $(SRCROOT)land_lad2/vegetation/vegn_radiation.F90 $(SRCROOT)land_lad2/river/river_physics.F90 $(SRCROOT)land_lad2/shared/sphum.F90 $(SRCROOT)land_lad2/shared/table_printer.F90 $(SRCROOT)land_lad2/vegetation/vegn_harvesting.F90 $(SRCROOT)land_lad2/vegetation/vegn_dynamics.F90 $(SRCROOT)land_lad2/shared/land_tile_diag_buff.F90 $(SRCROOT)land_lad2/soil/soil_tile.F90 $(SRCROOT)land_lad2/land_tile.F90 $(SRCROOT)land_lad2/predefined_tiles/tiling_input.F90 $(SRCROOT)land_lad2/land_tracers/land_tracers.F90 $(SRCROOT)land_lad2/soil/soil.F90 $(SRCROOT)land_lad2/shared/land_tile_diag.F90 $(SRCROOT)land_lad2/glacier/glac_tile.F90 $(SRCROOT)land_lad2/shared/land_tile_io.F90 $(SRCROOT)land_lad2/land_model.F90 $(SRCROOT)land_lad2/vegetation/vegn_cohort.F90 $(SRCROOT)land_lad2/land_chksum.F90 $(SRCROOT)land_lad2/topo_rough/topo_rough.F90 $(SRCROOT)land_lad2/lake/lake.F90 $(SRCROOT)land_lad2/shared/land_tile_diag_sel.F90 $(SRCROOT)land_lad2/land_data.F90 $(SRCROOT)land_lad2/snow/snow.F90 $(SRCROOT)land_lad2/canopy_air/canopy_air.F90 $(SRCROOT)land_lad2/vegetation/read_remap_cohort_data_new.inc $(SRCROOT)land_lad2/shared/land_debug.F90 $(SRCROOT)land_lad2/river/river_type.F90 $(SRCROOT)land_lad2/river/river.F90 $(SRCROOT)land_lad2/soil/hillslope.F90 $(SRCROOT)land_lad2/canopy_air/cana_tile.F90 $(SRCROOT)land_lad2/soil/soil_carbon.F90 $(SRCROOT)land_lad2/vegetation/vegn_static_override.F90 $(SRCROOT)land_lad2/shared/land_io.F90 $(SRCROOT)land_lad2/vegetation/vegn_disturbance.F90 $(SRCROOT)land_lad2/soil/hillslope_tile.F90 $(SRCROOT)land_lad2/predefined_tiles/tiling_input_types.F90 $(SRCROOT)land_lad2/glacier/glacier.F90 $(SRCROOT)FMS/include/fms_platform.h $(SRCROOT)land_lad2/topo_rough/../shared/debug.inc $(SRCROOT)land_lad2/land_tracers/land_dust.F90 $(SRCROOT)land_lad2/topo_rough/../shared/version_variable.inc $(SRCROOT)land_lad2/vegetation/vegn_data.F90 $(SRCROOT)land_lad2/vegetation/vegetation.F90 $(SRCROOT)land_lad2/soil/uptake.F90 $(SRCROOT)land_lad2/vegetation/vegn_cohort_io.F90 $(SRCROOT)land_lad2/transitions/transitions.F90 $(SRCROOT)land_lad2/snow/snow_tile.F90 $(SRCROOT)land_lad2/lake/lake_tile.F90 $(SRCROOT)land_lad2/soil/hillslope_hydrology.F90 $(SRCROOT)land_lad2/shared/land_numerics.F90 $(SRCROOT)land_lad2/land_tracers/land_tracer_driver.F90 $(SRCROOT)land_lad2/land_constants.F90
+./land_model.F90: $(SRCROOT)land_lad2/land_model.F90
+	cp $(SRCROOT)land_lad2/land_model.F90 .
+./land_numerics.F90: $(SRCROOT)land_lad2/shared/land_numerics.F90
+	cp $(SRCROOT)land_lad2/shared/land_numerics.F90 .
+./land_tracers.F90: $(SRCROOT)land_lad2/land_tracers/land_tracers.F90
+	cp $(SRCROOT)land_lad2/land_tracers/land_tracers.F90 .
+./version_variable.inc: $(SRCROOT)land_lad2/shared/version_variable.inc
+	cp $(SRCROOT)land_lad2/shared/version_variable.inc .
+./vegn_static_override.F90: $(SRCROOT)land_lad2/vegetation/vegn_static_override.F90
+	cp $(SRCROOT)land_lad2/vegetation/vegn_static_override.F90 .
+./transitions.F90: $(SRCROOT)land_lad2/transitions/transitions.F90
+	cp $(SRCROOT)land_lad2/transitions/transitions.F90 .
+./land_tracer_driver.F90: $(SRCROOT)land_lad2/land_tracers/land_tracer_driver.F90
+	cp $(SRCROOT)land_lad2/land_tracers/land_tracer_driver.F90 .
+./version_variable.inc: $(SRCROOT)land_lad2/topo_rough/../shared/version_variable.inc
+	cp $(SRCROOT)land_lad2/topo_rough/../shared/version_variable.inc .
+./canopy_air.F90: $(SRCROOT)land_lad2/canopy_air/canopy_air.F90
+	cp $(SRCROOT)land_lad2/canopy_air/canopy_air.F90 .
+SRC = $(SRCROOT)land_lad2/lake/lake.F90 $(SRCROOT)land_lad2/soil/soil.F90 $(SRCROOT)land_lad2/canopy_air/canopy_air.F90 $(SRCROOT)land_lad2/land_constants.F90 $(SRCROOT)land_lad2/predefined_tiles/tiling_input_types.F90 $(SRCROOT)land_lad2/vegetation/vegn_data.F90 $(SRCROOT)land_lad2/shared/land_tile_io.F90 $(SRCROOT)land_lad2/vegetation/vegn_dynamics.F90 $(SRCROOT)land_lad2/snow/snow_tile.F90 $(SRCROOT)land_lad2/shared/land_debug.F90 $(SRCROOT)land_lad2/vegetation/vegetation.F90 $(SRCROOT)land_lad2/glacier/glacier.F90 $(SRCROOT)land_lad2/vegetation/vegn_harvesting.F90 $(SRCROOT)land_lad2/shared/table_printer.F90 $(SRCROOT)land_lad2/soil/hillslope_hydrology.F90 $(SRCROOT)land_lad2/shared/land_tile_diag_buff.F90 $(SRCROOT)land_lad2/river/river_type.F90 $(SRCROOT)land_lad2/soil/hillslope_tile.F90 $(SRCROOT)land_lad2/vegetation/vegn_disturbance.F90 $(SRCROOT)land_lad2/land_tile.F90 $(SRCROOT)land_lad2/canopy_air/cana_tile.F90 $(SRCROOT)land_lad2/vegetation/vegn_static_override.F90 $(SRCROOT)land_lad2/shared/land_tile_diag_sel.F90 $(SRCROOT)land_lad2/predefined_tiles/tiling_input.F90 $(SRCROOT)land_lad2/river/river.F90 $(SRCROOT)land_lad2/land_tracers/land_tracers.F90 $(SRCROOT)land_lad2/shared/land_numerics.F90 $(SRCROOT)land_lad2/snow/snow.F90 $(SRCROOT)land_lad2/soil/hillslope.F90 $(SRCROOT)land_lad2/vegetation/vegn_cohort_io.F90 $(SRCROOT)land_lad2/soil/uptake.F90 $(SRCROOT)land_lad2/land_model.F90 $(SRCROOT)land_lad2/shared/land_tile_diag.F90 $(SRCROOT)land_lad2/soil/soil_carbon.F90 $(SRCROOT)land_lad2/vegetation/vegn_photosynthesis.F90 $(SRCROOT)land_lad2/vegetation/vegn_tile.F90 $(SRCROOT)land_lad2/transitions/transitions.F90 $(SRCROOT)land_lad2/lake/lake_tile.F90 $(SRCROOT)land_lad2/soil/soil_tile.F90 $(SRCROOT)land_lad2/vegetation/vegn_cohort.F90 $(SRCROOT)land_lad2/land_tracers/land_dust.F90 $(SRCROOT)land_lad2/shared/sphum.F90 $(SRCROOT)land_lad2/topo_rough/topo_rough.F90 $(SRCROOT)land_lad2/land_tracers/land_tracer_driver.F90 $(SRCROOT)land_lad2/shared/land_utils.F90 $(SRCROOT)land_lad2/land_chksum.F90 $(SRCROOT)land_lad2/vegetation/vegn_radiation.F90 $(SRCROOT)land_lad2/shared/land_io.F90 $(SRCROOT)land_lad2/land_data.F90 $(SRCROOT)land_lad2/river/river_physics.F90 $(SRCROOT)land_lad2/glacier/glac_tile.F90 $(SRCROOT)land_lad2/shared/version_variable.inc $(SRCROOT)land_lad2/topo_rough/../shared/version_variable.inc $(SRCROOT)FMS/include/fms_platform.h $(SRCROOT)land_lad2/vegetation/read_remap_cohort_data_new.inc $(SRCROOT)land_lad2/shared/debug.inc $(SRCROOT)land_lad2/topo_rough/../shared/debug.inc
+OBJ = lake.o soil.o canopy_air.o land_constants.o tiling_input_types.o vegn_data.o land_tile_io.o vegn_dynamics.o snow_tile.o land_debug.o vegetation.o glacier.o vegn_harvesting.o table_printer.o hillslope_hydrology.o land_tile_diag_buff.o river_type.o hillslope_tile.o vegn_disturbance.o land_tile.o cana_tile.o vegn_static_override.o land_tile_diag_sel.o tiling_input.o river.o land_tracers.o land_numerics.o snow.o hillslope.o vegn_cohort_io.o uptake.o land_model.o land_tile_diag.o soil_carbon.o vegn_photosynthesis.o vegn_tile.o transitions.o lake_tile.o soil_tile.o vegn_cohort.o land_dust.o sphum.o topo_rough.o land_tracer_driver.o land_utils.o land_chksum.o vegn_radiation.o land_io.o land_data.o river_physics.o glac_tile.o
+OFF = $(SRCROOT)land_lad2/soil/hillslope_tile.F90 $(SRCROOT)land_lad2/shared/land_tile_diag.F90 $(SRCROOT)land_lad2/shared/land_utils.F90 $(SRCROOT)land_lad2/predefined_tiles/tiling_input_types.F90 $(SRCROOT)land_lad2/lake/lake.F90 $(SRCROOT)land_lad2/shared/land_tile_diag_buff.F90 $(SRCROOT)land_lad2/soil/soil_carbon.F90 $(SRCROOT)land_lad2/glacier/glac_tile.F90 $(SRCROOT)land_lad2/glacier/glacier.F90 $(SRCROOT)FMS/include/fms_platform.h $(SRCROOT)land_lad2/vegetation/vegn_data.F90 $(SRCROOT)land_lad2/vegetation/vegn_radiation.F90 $(SRCROOT)land_lad2/soil/soil_tile.F90 $(SRCROOT)land_lad2/lake/lake_tile.F90 $(SRCROOT)land_lad2/shared/debug.inc $(SRCROOT)land_lad2/vegetation/vegetation.F90 $(SRCROOT)land_lad2/vegetation/vegn_cohort_io.F90 $(SRCROOT)land_lad2/soil/uptake.F90 $(SRCROOT)land_lad2/soil/hillslope_hydrology.F90 $(SRCROOT)land_lad2/vegetation/vegn_tile.F90 $(SRCROOT)land_lad2/shared/sphum.F90 $(SRCROOT)land_lad2/predefined_tiles/tiling_input.F90 $(SRCROOT)land_lad2/shared/land_io.F90 $(SRCROOT)land_lad2/soil/hillslope.F90 $(SRCROOT)land_lad2/river/river_physics.F90 $(SRCROOT)land_lad2/vegetation/vegn_dynamics.F90 $(SRCROOT)land_lad2/topo_rough/../shared/debug.inc $(SRCROOT)land_lad2/river/river_type.F90 $(SRCROOT)land_lad2/vegetation/vegn_cohort.F90 $(SRCROOT)land_lad2/shared/land_debug.F90 $(SRCROOT)land_lad2/vegetation/read_remap_cohort_data_new.inc $(SRCROOT)land_lad2/snow/snow_tile.F90 $(SRCROOT)land_lad2/canopy_air/cana_tile.F90 $(SRCROOT)land_lad2/topo_rough/topo_rough.F90 $(SRCROOT)land_lad2/shared/table_printer.F90 $(SRCROOT)land_lad2/soil/soil.F90 $(SRCROOT)land_lad2/snow/snow.F90 $(SRCROOT)land_lad2/vegetation/vegn_photosynthesis.F90 $(SRCROOT)land_lad2/land_tracers/land_dust.F90 $(SRCROOT)land_lad2/river/river.F90 $(SRCROOT)land_lad2/land_data.F90 $(SRCROOT)land_lad2/vegetation/vegn_disturbance.F90 $(SRCROOT)land_lad2/shared/land_tile_io.F90 $(SRCROOT)land_lad2/land_chksum.F90 $(SRCROOT)land_lad2/land_tile.F90 $(SRCROOT)land_lad2/vegetation/vegn_harvesting.F90 $(SRCROOT)land_lad2/shared/land_tile_diag_sel.F90 $(SRCROOT)land_lad2/land_constants.F90 $(SRCROOT)land_lad2/land_model.F90 $(SRCROOT)land_lad2/shared/land_numerics.F90 $(SRCROOT)land_lad2/land_tracers/land_tracers.F90 $(SRCROOT)land_lad2/shared/version_variable.inc $(SRCROOT)land_lad2/vegetation/vegn_static_override.F90 $(SRCROOT)land_lad2/transitions/transitions.F90 $(SRCROOT)land_lad2/land_tracers/land_tracer_driver.F90 $(SRCROOT)land_lad2/topo_rough/../shared/version_variable.inc $(SRCROOT)land_lad2/canopy_air/canopy_air.F90
 clean: neat
 	-rm -f .libland_lad2.a.cppdefs $(OBJ) libland_lad2.a
 

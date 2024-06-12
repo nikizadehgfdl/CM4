@@ -349,7 +349,7 @@ longwave_utilities.o: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwa
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90
 ls_cloud_macrophysics.o: $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90 physics_types.o tiedtke_macro.o aerosol_cloud.o lscloud_types.o CLUBB_driver_SCM.o aerosol_types.o moist_processes_utils.o physics_radiation_exch.o
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90
-ls_cloud_microphysics.o: $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90 physics_types.o lscloud_types.o aerosol_types.o physics_radiation_exch.o moist_processes_utils.o lin_cloud_microphys.o lscloud_debug.o rotstayn_klein_mp.o morrison_gettelman_microp.o cldwat2m_micro.o micro_mg.o micro_mg2.o
+ls_cloud_microphysics.o: $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90 physics_types.o lscloud_types.o aerosol_types.o physics_radiation_exch.o moist_processes_utils.o lin_cloud_microphys.o lscloud_debug.o rotstayn_klein_mp.o morrison_gettelman_microp.o cldwat2m_micro.o micro_mg.o 
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90
 lscale_cond.o: $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90
@@ -377,10 +377,6 @@ mg_drag.o: $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90
 micro_mg.o: $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90 gamma_mg.o lscloud_types.o simple_pdf.o physics_radiation_exch.o
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90
-micro_mg2.o: $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2.F90 gamma_mg.o lscloud_types.o physics_radiation_exch.o micro_mg2_utils.o
-	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2.F90
-micro_mg2_utils.o: $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2_utils.F90 gamma_mg.o
-	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2_utils.F90
 microphys_rad.o: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90 cloudrad_types.o sealw99.o esfsw_driver.o
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90
 mixing_length.o: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90 constants_clubb.o parameters_tunable.o parameters_model.o grid_class.o numerical_check.o saturation.o error_code.o model_flags.o clubb_precision.o
@@ -607,621 +603,617 @@ xactive_bvoc.o: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c	$(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90
 zeff.o: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H math_lib.o optics_lib.o
 	$(FC) $(CPPDEFS) $(FPPFLAGS) $(FFLAGS) $(OTHERFLAGS) $(OTHER_FFLAGS) -c -I$(SRCROOT)atmos_phys/atmos_param/cosp	$(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90
-./AM3.mods.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mods.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mods.F90 .
-./donner_rad_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_rad_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_rad_k.F90 .
-./donner_nml.h: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_nml.h
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_nml.h .
-./mo_chemini.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemini.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemini.F90 .
-./stats_rad_zm.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zm.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zm.F90 .
-./radar_simulator_types.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_types.F90 .
-./mo_imp_slv.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_imp_slv.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_imp_slv.F90 .
-./rotstayn_klein_mp.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/rotstayn_klein_mp.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/rotstayn_klein_mp.F90 .
-./simple_pdf.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/simple_pdf.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/simple_pdf.F90 .
-./gmres_cache.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_cache.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_cache.F90 .
-./advance_wp2_wp3_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_wp2_wp3_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_wp2_wp3_module.F90 .
-./polysvp.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/polysvp.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/polysvp.F90 .
-./aer_in_act.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_in_act.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_in_act.F90 .
-./entrain.F90: $(SRCROOT)atmos_phys/atmos_param/entrain/entrain.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/entrain/entrain.F90 .
-./rad_output_file.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/rad_output_file.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/rad_output_file.F90 .
-./grid_class.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/grid_class.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/grid_class.F90 .
-./uw_clouds_W.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/uw_clouds_W.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/uw_clouds_W.F90 .
-./advance_xm_wpxp_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xm_wpxp_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xm_wpxp_module.F90 .
-./cosp_driver.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_driver.F90 .
-./vert_diff.F90: $(SRCROOT)atmos_phys/atmos_param/vert_diff/vert_diff.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/vert_diff/vert_diff.F90 .
-./cosp_modis_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_modis_simulator.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_modis_simulator.F90 .
-./radiation_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_types.F90 .
-./donner_deep_clouds_W.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/donner_deep_clouds_W.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/donner_deep_clouds_W.F90 .
-./diffusion.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/diffusion.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/diffusion.F90 .
-./aer_ccn_act_k.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act_k.F90 .
-./fms_donner.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/fms_donner.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/fms_donner.F90 .
-./longwave_tables.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_tables.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_tables.F90 .
-./betts_miller.F90: $(SRCROOT)atmos_phys/atmos_param/betts_miller/betts_miller.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/betts_miller/betts_miller.F90 .
-./aerosolrad_package.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_package.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_package.F90 .
-./atmos_regional_tracer_driver.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_regional_tracer_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_regional_tracer_driver.F90 .
-./cloud_spec.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloud_spec.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloud_spec.F90 .
-./moist_conv.F90: $(SRCROOT)atmos_phys/atmos_param/moist_conv/moist_conv.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/moist_conv/moist_conv.F90 .
-./extrapolation.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/extrapolation.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/extrapolation.F90 .
-./aerosol_params.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aerosol_params.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aerosol_params.F90 .
-./tropchem_types_mod.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/tropchem_types_mod.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/tropchem_types_mod.F90 .
-./tiedtke_macro.F90: $(SRCROOT)atmos_phys/atmos_param/macrophysics/tiedtke_macro.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/macrophysics/tiedtke_macro.F90 .
-./conv_plumes.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes.F90 .
-./lidar_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lidar_simulator.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lidar_simulator.F90 .
-./grey_radiation.F90: $(SRCROOT)atmos_phys/atmos_param/grey_radiation/grey_radiation.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/grey_radiation/grey_radiation.F90 .
-./atmos_dust.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_dust.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_dust.F90 .
-./pf_to_mr.F: $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/pf_to_mr.F
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/pf_to_mr.F .
-./recl.inc: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/recl.inc
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/recl.inc .
-./clubb_core.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_core.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_core.F90 .
-./cosp_diagnostics.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_diagnostics.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_diagnostics.F90 .
-./stable_bl_turb.F90: $(SRCROOT)atmos_phys/atmos_param/stable_bl_turb/stable_bl_turb.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/stable_bl_turb/stable_bl_turb.F90 .
-./moist_processes.F90: $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes.F90 .
-./lscale_cond.F90: $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90 .
-./saturation.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/saturation.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/saturation.F90 .
-./cg_drag.F90: $(SRCROOT)atmos_phys/atmos_param/cg_drag/cg_drag.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cg_drag/cg_drag.F90 .
-./moist_processes_utils.F90: $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes_utils.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes_utils.F90 .
-./donner_cloud_model_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cloud_model_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cloud_model_k.F90 .
-./convection_utilities.F90: $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_utilities.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_utilities.F90 .
-./stats_type.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_type.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_type.F90 .
-./stats_variables.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_variables.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_variables.F90 .
-./matrix_operations.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/matrix_operations.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/matrix_operations.F90 .
-./atmos_cmip_diag.F90: $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_diag.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_diag.F90 .
-./cosp_types.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_types.F90 .
-./ras.F90: $(SRCROOT)atmos_phys/atmos_param/ras/ras.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/ras/ras.F90 .
-./moz.subs.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.subs.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.subs.F90 .
-./moz.mods.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mods.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mods.F90 .
-./longwave_utilities.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90 .
-./parameters_model.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_model.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_model.F90 .
-./mt95.f90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mt95.f90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mt95.f90 .
-./clip_explicit.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_explicit.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_explicit.F90 .
-./donner_deep_miz.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_miz.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_miz.F90 .
-./ozone.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/ozone.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/ozone.F90 .
-./mrgrnk.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/mrgrnk.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/mrgrnk.F90 .
-./donner_meso_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_meso_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_meso_k.F90 .
-./cloud_generator.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_generator/cloud_generator.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cloud_generator/cloud_generator.F90 .
-./dry_adj.F90: $(SRCROOT)atmos_phys/atmos_param/dry_adj/dry_adj.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/dry_adj/dry_adj.F90 .
-./input_reader.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_reader.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_reader.F90 .
-./aer_ccn_act.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act.F90 .
-./dsd.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/dsd.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/dsd.F90 .
-./atmos_radon.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_radon.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_radon.F90 .
-./prec_scops.F: $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/prec_scops.F
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/prec_scops.F .
-./mo_chem_utls.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chem_utls.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chem_utls.F90 .
-./microphys_rad.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90 .
-./surface_varnce_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/surface_varnce_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/surface_varnce_module.F90 .
-./shallow_conv.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_conv/shallow_conv.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_conv/shallow_conv.F90 .
-./morrison_gettelman_microp.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/morrison_gettelman_microp.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/morrison_gettelman_microp.F90 .
-./fms_platform.h: $(SRCROOT)FMS/include/fms_platform.h
-	cp $(SRCROOT)FMS/include/fms_platform.h .
-./stats_zm.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zm.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zm.F90 .
-./clubb_precision.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_precision.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_precision.F90 .
-./lscloud_types.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_types.F90 .
-./mo_fphoto.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fphoto.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fphoto.F90 .
-./anl_erf.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/anl_erf.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/anl_erf.F90 .
-./mixing_length.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90 .
-./isrpia.inc: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isrpia.inc
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isrpia.inc .
-./cloud_rad.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_rad/cloud_rad.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cloud_rad/cloud_rad.F90 .
-./AM3.subs.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.subs.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.subs.F90 .
-./parameters_microphys.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_microphys.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_microphys.F90 .
-./clip_semi_implicit.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_semi_implicit.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_semi_implicit.F90 .
-./model_flags.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/model_flags.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/model_flags.F90 .
-./nonfms_donner.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/nonfms_donner.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/nonfms_donner.F90 .
-./esfsw_bands.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_bands.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_bands.F90 .
-./parameters_radiation.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_radiation.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_radiation.F90 .
-./fill_holes.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/fill_holes.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/fill_holes.F90 .
-./math_lib.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/math_lib.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/math_lib.F90 .
-./pdf_parameter_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_parameter_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_parameter_module.F90 .
-./deep_conv.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/deep_conv.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/deep_conv.F90 .
-./isccp_clouds.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/isccp_clouds.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/isccp_clouds.F90 .
-./donner_deep_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_k.F90 .
-./stats_zt.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zt.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zt.F90 .
-./cloud_chem.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/cloud_chem.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/cloud_chem.F90 .
-./lscloud_debug.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_debug.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_debug.F90 .
-./donner_utilities_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_utilities_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_utilities_k.F90 .
-./gas_tf.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/gas_tf.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/gas_tf.F90 .
-./diffusivity.F90: $(SRCROOT)atmos_phys/atmos_param/diffusivity/diffusivity.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/diffusivity/diffusivity.F90 .
-./icarus.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/icarus.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/icarus.F90 .
-./strat_chem_model.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_model.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_model.F90 .
-./donner_lite_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lite_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lite_k.F90 .
-./mg_drag.F90: $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90 .
-./mo_fastjx.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fastjx.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fastjx.F90 .
-./cldwat2m_micro.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/cldwat2m_micro.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/cldwat2m_micro.F90 .
-./T_in_K_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/T_in_K_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/T_in_K_module.F90 .
-./cloudrad_package.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_package.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_package.F90 .
-./esfsw_utilities.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_utilities.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_utilities.F90 .
-./cosp_misr_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_misr_simulator.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_misr_simulator.F90 .
-./cosp_rttov_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_rttov_simulator.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_rttov_simulator.F90 .
-./cumulus_closure_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/cumulus_closure_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/cumulus_closure_k.F90 .
-./get_random_number_stream.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/get_random_number_stream.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/get_random_number_stream.F90 .
-./conv_plumes_k.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes_k.F90 .
-./donner_types.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.F90 .
-./constants_clubb.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/constants_clubb.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/constants_clubb.F90 .
-./shortwave_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/shortwave_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/shortwave_driver.F90 .
-./mo_setsox.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/mo_setsox.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/mo_setsox.F90 .
-./advance_sclrm_Nd_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/advance_sclrm_Nd_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/advance_sclrm_Nd_module.F90 .
-./AM3_fphoto.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fphoto.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fphoto.F90 .
-./lscloud_driver.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_driver.F90 .
-./optical_path.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/optical_path.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/optical_path.F90 .
-./clouds.F90: $(SRCROOT)atmos_phys/atmos_param/clouds/clouds.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clouds/clouds.F90 .
-./strat_clouds_W.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/strat_clouds_W.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/strat_clouds_W.F90 .
-./radar_simulator_init.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_init.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_init.F90 .
-./radiation_driver_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_types.F90 .
-./pos_definite_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pos_definite_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pos_definite_module.F90 .
-./strat_chem_driver.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_driver.F90 .
-./numerical_check.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/numerical_check.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/numerical_check.F90 .
-./stats_LH_zt.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_LH_zt.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_LH_zt.F90 .
-./radiation_diag.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/util/radiation_diag.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/util/radiation_diag.F90 .
-./format_input.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/format_input.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/format_input.F90 .
-./bm_omp.F90: $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_omp.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_omp.F90 .
-./mo_hook.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_hook.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_hook.F90 .
-./scale_LUTs_io.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/scale_LUTs_io.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/scale_LUTs_io.F90 .
-./aerosol_cloud.F90: $(SRCROOT)atmos_phys/atmos_param/aerosol_cloud/aerosol_cloud.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/aerosol_cloud/aerosol_cloud.F90 .
-./radiation_driver_diag.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_diag.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_diag.F90 .
-./cosp_constants.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_constants.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_constants.F90 .
-./scops.F: $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/scops.F
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/scops.F .
-./gamma_mg.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/gamma_mg.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/gamma_mg.F90 .
-./physics_radiation_exch.F90: $(SRCROOT)atmos_phys/atmos_param/physics_radiation_exch/physics_radiation_exch.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/physics_radiation_exch/physics_radiation_exch.F90 .
-./atmos_cmip_interp.inc: $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_interp.inc
-	cp $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_interp.inc .
-./atmos_soa.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_soa.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_soa.F90 .
-./shallow_physics.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_physics/shallow_physics.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_physics/shallow_physics.F90 .
-./mono_flux_limiter.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mono_flux_limiter.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mono_flux_limiter.F90 .
-./tropchem_driver.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem_driver.F90 .
-./AM3_fastjx.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fastjx.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fastjx.F90 .
-./solar_data_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/solar_data_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/solar_data_driver.F90 .
-./lw_gases_stdtf.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/lw_gases_stdtf.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/lw_gases_stdtf.F90 .
-./sponge_layer_damping.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sponge_layer_damping.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sponge_layer_damping.F90 .
-./atmos_sea_salt.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sea_salt.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sea_salt.F90 .
-./esfsw_parameters.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_parameters.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_parameters.F90 .
-./micro_mg2_utils.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2_utils.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2_utils.F90 .
-./aerosol_types.F90: $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol_types.F90 .
 ./gases.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/gases.F90
 	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/gases.F90 .
-./aerosolrad_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_types.F90 .
-./strat_cloud.F90: $(SRCROOT)atmos_phys/atmos_param/strat_cloud/strat_cloud.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/strat_cloud/strat_cloud.F90 .
-./uw_conv.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/uw_conv.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/uw_conv.F90 .
-./stats_subs.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_subs.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_subs.F90 .
-./atmos_sulfur_hex.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfur_hex.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfur_hex.F90 .
-./mo_rodas_slv.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_rodas_slv.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_rodas_slv.F90 .
-./mo_read_sim_chm.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_read_sim_chm.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_read_sim_chm.F90 .
-./vert_diff_driver.F90: $(SRCROOT)atmos_phys/atmos_param/vert_diff_driver/vert_diff_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/vert_diff_driver/vert_diff_driver.F90 .
-./zeff.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90 .
-./cosp_radar.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/cosp_radar.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/cosp_radar.F90 .
-./interpolation.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/interpolation.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/interpolation.F90 .
-./modis_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/MODIS_simulator/modis_simulator.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/MODIS_simulator/modis_simulator.F90 .
-./atmos_tracer_driver.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_driver.F90 .
-./qe_moist_convection.F90: $(SRCROOT)atmos_phys/atmos_param/qe_moist_convection/qe_moist_convection.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/qe_moist_convection/qe_moist_convection.F90 .
-./donner_types.h: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.h
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.h .
-./parameter_indices.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameter_indices.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameter_indices.F90 .
-./radiative_gases.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases.F90 .
-./moz.mat.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mat.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mat.F90 .
-./bulkphys_rad.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/bulkphys_rad.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/bulkphys_rad.F90 .
-./radiative_gases_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases_types.F90 .
-./atmos_nudge.F90: $(SRCROOT)atmos_phys/atmos_shared/atmos_nudge/atmos_nudge.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/atmos_nudge/atmos_nudge.F90 .
-./vert_turb_driver.F90: $(SRCROOT)atmos_phys/atmos_param/vert_turb_driver/vert_turb_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/vert_turb_driver/vert_turb_driver.F90 .
-./longwave_params.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_params.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_params.F90 .
-./output_netcdf.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_netcdf.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_netcdf.F90 .
-./my25_turb.F90: $(SRCROOT)atmos_phys/atmos_param/my25_turb/my25_turb.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/my25_turb/my25_turb.F90 .
-./rh_clouds.F90: $(SRCROOT)atmos_phys/atmos_param/rh_clouds/rh_clouds.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/rh_clouds/rh_clouds.F90 .
 ./radiation_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver.F90
 	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver.F90 .
-./mo_jpl.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_jpl.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_jpl.F90 .
-./lscloud_constants.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_constants.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_constants.F90 .
-./CLUBB_driver_SCM.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_driver_SCM.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_driver_SCM.F90 .
-./donner_deep.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep.F90 .
-./variables_diagnostic_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_diagnostic_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_diagnostic_module.F90 .
-./isoropiaIIcode.F: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isoropiaIIcode.F
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isoropiaIIcode.F .
-./stats_rad_zt.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zt.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zt.F90 .
-./hydrostatic_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hydrostatic_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hydrostatic_module.F90 .
-./cloud_obs.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_obs/cloud_obs.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cloud_obs/cloud_obs.F90 .
-./mo_chemdr.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemdr.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemdr.F90 .
-./detr_ice_num.F90: $(SRCROOT)atmos_phys/atmos_param/convection_driver/detr_ice_num.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/convection_driver/detr_ice_num.F90 .
-./congvec.H: $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/congvec.H
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/congvec.H .
-./sigma_sqd_w_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sigma_sqd_w_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sigma_sqd_w_module.F90 .
-./edt.F90: $(SRCROOT)atmos_phys/atmos_param/edt/edt.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/edt/edt.F90 .
-./diag_cloud_rad.F90: $(SRCROOT)atmos_phys/atmos_param/diag_cloud_rad/diag_cloud_rad.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/diag_cloud_rad/diag_cloud_rad.F90 .
-./error_code.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/error_code.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/error_code.F90 .
-./file_functions.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/file_functions.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/file_functions.F90 .
-./llnl_stats.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/llnl_stats.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/llnl_stats.F90 .
-./optics_lib.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/optics_lib.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/optics_lib.F90 .
-./bm_massflux.F90: $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_massflux.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_massflux.F90 .
-./atmos_ch3i.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch3i.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch3i.F90 .
-./cosp_io.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_io.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_io.F90 .
-./check_nan.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/check_nan.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/check_nan.F90 .
-./stat_file_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stat_file_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stat_file_module.F90 .
-./cosp_stats.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_stats.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_stats.F90 .
+./advance_xp2_xpyp_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xp2_xpyp_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xp2_xpyp_module.F90 .
+./atmos_sea_salt.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sea_salt.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sea_salt.F90 .
+./aerosol_types.F90: $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol_types.F90 .
 ./cosp_isccp_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_isccp_simulator.F90
 	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_isccp_simulator.F90 .
+./isccp_clouds.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/isccp_clouds.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/isccp_clouds.F90 .
+./cosp_modis_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_modis_simulator.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_modis_simulator.F90 .
+./vert_diff.F90: $(SRCROOT)atmos_phys/atmos_param/vert_diff/vert_diff.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/vert_diff/vert_diff.F90 .
+./stats_rad_zt.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zt.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zt.F90 .
+./fill_holes.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/fill_holes.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/fill_holes.F90 .
+./cloudrad_package.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_package.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_package.F90 .
+./rotstayn_klein_mp.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/rotstayn_klein_mp.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/rotstayn_klein_mp.F90 .
+./pf_to_mr.F: $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/pf_to_mr.F
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/pf_to_mr.F .
+./diffusion.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/diffusion.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/diffusion.F90 .
+./cosp_driver.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_driver.F90 .
+./edt.F90: $(SRCROOT)atmos_phys/atmos_param/edt/edt.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/edt/edt.F90 .
+./check_nan.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/check_nan.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/check_nan.F90 .
+./advance_xm_wpxp_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xm_wpxp_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xm_wpxp_module.F90 .
+./cosp_io.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_io.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_io.F90 .
+./dsd.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/dsd.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/dsd.F90 .
+./longwave_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_types.F90 .
+./mo_setinv.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_setinv.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_setinv.F90 .
+./my25_turb.F90: $(SRCROOT)atmos_phys/atmos_param/my25_turb/my25_turb.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/my25_turb/my25_turb.F90 .
 ./pdf_closure_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_closure_module.F90
 	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_closure_module.F90 .
-./aerosol_thermodynamics.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/aerosol_thermodynamics.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/aerosol_thermodynamics.F90 .
-./calendar.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/calendar.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/calendar.F90 .
-./array_lib.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/array_lib.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/array_lib.F90 .
-./cosp_utils.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_utils.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_utils.F90 .
-./diag_cloud.F90: $(SRCROOT)atmos_phys/atmos_param/diag_cloud/diag_cloud.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/diag_cloud/diag_cloud.F90 .
-./advance_windm_edsclrm_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_windm_edsclrm_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_windm_edsclrm_module.F90 .
-./atmos_sulfate.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfate.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfate.F90 .
-./gmres_wrap.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_wrap.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_wrap.F90 .
+./aer_ccn_act.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act.F90 .
+./tiedtke_macro.F90: $(SRCROOT)atmos_phys/atmos_param/macrophysics/tiedtke_macro.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/macrophysics/tiedtke_macro.F90 .
+./conv_utilities_k.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities_k.F90 .
+./cosp_constants.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_constants.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_constants.F90 .
+./stable_bl_turb.F90: $(SRCROOT)atmos_phys/atmos_param/stable_bl_turb/stable_bl_turb.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/stable_bl_turb/stable_bl_turb.F90 .
+./radiative_gases.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases.F90 .
+./uw_conv.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/uw_conv.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/uw_conv.F90 .
+./physics_radiation_exch.F90: $(SRCROOT)atmos_phys/atmos_param/physics_radiation_exch/physics_radiation_exch.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/physics_radiation_exch/physics_radiation_exch.F90 .
+./vert_turb_driver.F90: $(SRCROOT)atmos_phys/atmos_param/vert_turb_driver/vert_turb_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/vert_turb_driver/vert_turb_driver.F90 .
+./shortwave_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/shortwave_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/shortwave_driver.F90 .
+./array_index.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/array_index.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/array_index.F90 .
+./mono_flux_limiter.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mono_flux_limiter.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mono_flux_limiter.F90 .
+./surface_varnce_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/surface_varnce_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/surface_varnce_module.F90 .
+./radiation_driver_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_types.F90 .
+./donner_deep_miz.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_miz.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_miz.F90 .
+./bm_massflux.F90: $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_massflux.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_massflux.F90 .
+./esfsw_utilities.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_utilities.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_utilities.F90 .
+./diag_cloud_rad.F90: $(SRCROOT)atmos_phys/atmos_param/diag_cloud_rad/diag_cloud_rad.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/diag_cloud_rad/diag_cloud_rad.F90 .
+./mo_hook.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_hook.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_hook.F90 .
+./rh_clouds.F90: $(SRCROOT)atmos_phys/atmos_param/rh_clouds/rh_clouds.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/rh_clouds/rh_clouds.F90 .
+./radiative_gases_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases_types.F90 .
+./zeff.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90 .
+./ice_nucl.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/ice_nucl.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/ice_nucl.F90 .
+./atmos_sulfur_hex.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfur_hex.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfur_hex.F90 .
+./donner_meso_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_meso_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_meso_k.F90 .
+./strat_chem_utilities.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/strat_chem_utilities.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/strat_chem_utilities.F90 .
+./mixing_length.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90 .
+./gas_tf.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/gas_tf.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/gas_tf.F90 .
+./input_names.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_names.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_names.F90 .
+./mt95.f90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mt95.f90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mt95.f90 .
+./mo_exp_slv.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_exp_slv.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_exp_slv.F90 .
+./moz.mat.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mat.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mat.F90 .
+./microphys_rad.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90 .
+./longwave_params.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_params.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_params.F90 .
+./radiation_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_types.F90 .
+./longwave_tables.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_tables.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_tables.F90 .
+./cosp_defs.H: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H .
+./cloud_rad.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_rad/cloud_rad.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cloud_rad/cloud_rad.F90 .
+./AM3_fastjx.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fastjx.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fastjx.F90 .
+./betts_miller.F90: $(SRCROOT)atmos_phys/atmos_param/betts_miller/betts_miller.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/betts_miller/betts_miller.F90 .
+./atmos_nudge.F90: $(SRCROOT)atmos_phys/atmos_shared/atmos_nudge/atmos_nudge.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/atmos_nudge/atmos_nudge.F90 .
+./cosp_lidar.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_lidar.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_lidar.F90 .
+./strat_clouds_W.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/strat_clouds_W.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/strat_clouds_W.F90 .
+./aerosol.F90: $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol.F90 .
+./corr_matrix_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/corr_matrix_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/corr_matrix_module.F90 .
+./donner_lite_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lite_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lite_k.F90 .
 ./Skw_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/Skw_module.F90
 	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/Skw_module.F90 .
 ./longwave_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/longwave_driver.F90
 	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/longwave_driver.F90 .
-./isccp_cloud_types.F: $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/isccp_cloud_types.F
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/isccp_cloud_types.F .
-./alt_cloud.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/alt_cloud.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/alt_cloud.F90 .
-./cu_mo_trans.F90: $(SRCROOT)atmos_phys/atmos_param/cu_mo_trans/cu_mo_trans.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cu_mo_trans/cu_mo_trans.F90 .
-./array_index.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/array_index.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/array_index.F90 .
-./hyper_diffusion_4th_ord.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hyper_diffusion_4th_ord.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hyper_diffusion_4th_ord.F90 .
-./atmos_co2.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_co2.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_co2.F90 .
-./lscloud_netcdf.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_netcdf.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_netcdf.F90 .
-./ls_cloud_microphysics.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90 .
-./convection_driver.F90: $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_driver.F90 .
-./cosp_defs.H: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H .
-./m_tracname.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/m_tracname.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/m_tracname.F90 .
-./topo_drag.F90: $(SRCROOT)atmos_phys/atmos_param/topo_drag/topo_drag.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/topo_drag/topo_drag.F90 .
-./lmd_ipsl_stats.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lmd_ipsl_stats.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lmd_ipsl_stats.F90 .
-./cloudrad_diagnostics.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_diagnostics.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_diagnostics.F90 .
-./xactive_bvoc.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90 .
-./corr_matrix_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/corr_matrix_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/corr_matrix_module.F90 .
-./cosp.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp.F90 .
-./esfsw_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_driver.F90 .
-./cosp_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_simulator.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_simulator.F90 .
-./cloudrad_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_driver.F90 .
-./cloud_zonal.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_zonal/cloud_zonal.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cloud_zonal/cloud_zonal.F90 .
-./lin_cloud_microphys.F90: $(SRCROOT)atmos_phys/atmos_param/lin_cloud_microphys/lin_cloud_microphys.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/lin_cloud_microphys/lin_cloud_microphys.F90 .
-./cloudrad_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_types.F90 .
-./longwave_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_types.F90 .
-./conv_utilities_k.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities_k.F90 .
-./atmos_lib.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/atmos_lib.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/atmos_lib.F90 .
-./strat_chem_utilities.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/strat_chem_utilities.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/strat_chem_utilities.F90 .
-./lapack_wrap.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/lapack_wrap.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/lapack_wrap.F90 .
-./input_names.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_names.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_names.F90 .
-./cosp_lidar.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_lidar.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_lidar.F90 .
-./longwave_clouds.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_clouds.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_clouds.F90 .
-./betaDistribution.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_generator/betaDistribution.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cloud_generator/betaDistribution.F90 .
-./aerosol.F90: $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol.F90 .
-./conv_closures.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_closures.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_closures.F90 .
-./atmos_ch4.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch4.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch4.F90 .
-./variables_radiation_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_radiation_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_radiation_module.F90 .
-./output_grads.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_grads.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_grads.F90 .
-./mo_setinv.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_setinv.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_setinv.F90 .
-./wet_deposition_0D.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/wet_deposition_0D.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/wet_deposition_0D.F90 .
-./atmos_global_diag.F90: $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_global_diag.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_global_diag.F90 .
-./mo_photo.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_photo.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_photo.F90 .
-./longwave_fluxes.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_fluxes.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_fluxes.F90 .
-./aerosolrad_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_driver.F90 .
-./donner_cape_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cape_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cape_k.F90 .
-./mean_adv.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mean_adv.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mean_adv.F90 .
-./conv_utilities.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities.F90 .
-./MISR_simulator.F: $(SRCROOT)atmos_phys/atmos_param/cosp/MISR_simulator/MISR_simulator.F
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/MISR_simulator/MISR_simulator.F .
-./parameters_tunable.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_tunable.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_tunable.F90 .
-./csr_matrix_class_3array.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/csr_matrix_class_3array.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/csr_matrix_class_3array.F90 .
-./two_stream_gray_rad.F90: $(SRCROOT)atmos_phys/atmos_param/two_stream_gray_rad/two_stream_gray_rad.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/two_stream_gray_rad/two_stream_gray_rad.F90 .
-./physics_types.F90: $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_types.F90 .
-./shortwave_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/shortwave_types.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/shortwave_types.F90 .
-./ls_cloud_macrophysics.F90: $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90 .
-./atmos_tropopause.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tropopause.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tropopause.F90 .
-./atmos_convection_tracer.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_convection_tracer.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_convection_tracer.F90 .
-./CLUBB_3D_var.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_3D_var.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_3D_var.F90 .
-./damping_driver.F90: $(SRCROOT)atmos_phys/atmos_param/damping_driver/damping_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/damping_driver/damping_driver.F90 .
-./radar_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator.F90 .
-./atmos_carbon_aerosol.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_carbon_aerosol.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_carbon_aerosol.F90 .
-./donner_lscloud_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lscloud_k.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lscloud_k.F90 .
-./micro_mg.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90 .
-./calc_Re.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/calc_Re.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/calc_Re.F90 .
-./atmos_age_tracer.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_age_tracer.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_age_tracer.F90 .
-./mo_exp_slv.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_exp_slv.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_exp_slv.F90 .
-./ice_nucl.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/ice_nucl.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/ice_nucl.F90 .
-./atmos_nh3_tag.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_nh3_tag.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_nh3_tag.F90 .
-./sealw99.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/sealw99.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/sealw99.F90 .
-./tke_turb.F90: $(SRCROOT)atmos_phys/atmos_param/tke_turb/tke_turb.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/tke_turb/tke_turb.F90 .
-./mo_usrrxt.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_usrrxt.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_usrrxt.F90 .
 ./vert_advection.F90: $(SRCROOT)atmos_phys/atmos_shared/vert_advection/vert_advection.F90
 	cp $(SRCROOT)atmos_phys/atmos_shared/vert_advection/vert_advection.F90 .
-./atmos_tracer_utilities.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_utilities.F90
-	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_utilities.F90 .
-./physics_driver.F90: $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_driver.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_driver.F90 .
-./advance_xp2_xpyp_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xp2_xpyp_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xp2_xpyp_module.F90 .
-./stats_sfc.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_sfc.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_sfc.F90 .
-./advance_helper_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_helper_module.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_helper_module.F90 .
-./micro_mg2.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2.F90
-	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2.F90 .
+./prec_scops.F: $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/prec_scops.F
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/prec_scops.F .
+./AM3_fphoto.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fphoto.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fphoto.F90 .
+./two_stream_gray_rad.F90: $(SRCROOT)atmos_phys/atmos_param/two_stream_gray_rad/two_stream_gray_rad.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/two_stream_gray_rad/two_stream_gray_rad.F90 .
+./mo_fastjx.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fastjx.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fastjx.F90 .
+./isrpia.inc: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isrpia.inc
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isrpia.inc .
+./moist_conv.F90: $(SRCROOT)atmos_phys/atmos_param/moist_conv/moist_conv.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/moist_conv/moist_conv.F90 .
+./clip_explicit.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_explicit.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_explicit.F90 .
+./AM3.subs.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.subs.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.subs.F90 .
+./dry_adj.F90: $(SRCROOT)atmos_phys/atmos_param/dry_adj/dry_adj.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/dry_adj/dry_adj.F90 .
 ./variables_prognostic_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_prognostic_module.F90
 	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_prognostic_module.F90 .
 ./endian.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/endian.F90
 	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/endian.F90 .
+./error_code.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/error_code.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/error_code.F90 .
+./stats_zm.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zm.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zm.F90 .
+./simple_pdf.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/simple_pdf.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/simple_pdf.F90 .
+./pos_definite_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pos_definite_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pos_definite_module.F90 .
+./nonfms_donner.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/nonfms_donner.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/nonfms_donner.F90 .
+./lapack_wrap.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/lapack_wrap.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/lapack_wrap.F90 .
+./math_lib.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/math_lib.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/math_lib.F90 .
+./parameter_indices.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameter_indices.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameter_indices.F90 .
+./convection_driver.F90: $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_driver.F90 .
+./tke_turb.F90: $(SRCROOT)atmos_phys/atmos_param/tke_turb/tke_turb.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/tke_turb/tke_turb.F90 .
+./m_tracname.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/m_tracname.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/m_tracname.F90 .
+./donner_cape_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cape_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cape_k.F90 .
+./mean_adv.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mean_adv.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mean_adv.F90 .
+./modis_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/MODIS_simulator/modis_simulator.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/MODIS_simulator/modis_simulator.F90 .
+./lmd_ipsl_stats.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lmd_ipsl_stats.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lmd_ipsl_stats.F90 .
+./mo_read_sim_chm.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_read_sim_chm.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_read_sim_chm.F90 .
+./donner_nml.h: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_nml.h
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_nml.h .
+./micro_mg.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90 .
+./solar_data_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/solar_data_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/solar_data_driver.F90 .
+./mo_chem_utls.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chem_utls.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chem_utls.F90 .
+./mrgrnk.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/mrgrnk.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/mrgrnk.F90 .
+./cosp_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_simulator.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_simulator.F90 .
+./stat_file_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stat_file_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stat_file_module.F90 .
+./hyper_diffusion_4th_ord.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hyper_diffusion_4th_ord.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hyper_diffusion_4th_ord.F90 .
+./cloudrad_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_types.F90 .
+./sponge_layer_damping.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sponge_layer_damping.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sponge_layer_damping.F90 .
+./numerical_check.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/numerical_check.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/numerical_check.F90 .
+./cldwat2m_micro.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/cldwat2m_micro.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/cldwat2m_micro.F90 .
+./advance_windm_edsclrm_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_windm_edsclrm_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_windm_edsclrm_module.F90 .
+./bulkphys_rad.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/bulkphys_rad.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/bulkphys_rad.F90 .
+./atmos_nh3_tag.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_nh3_tag.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_nh3_tag.F90 .
+./lscloud_constants.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_constants.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_constants.F90 .
+./xactive_bvoc.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90 .
+./cloud_zonal.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_zonal/cloud_zonal.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cloud_zonal/cloud_zonal.F90 .
+./stats_LH_zt.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_LH_zt.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_LH_zt.F90 .
+./MISR_simulator.F: $(SRCROOT)atmos_phys/atmos_param/cosp/MISR_simulator/MISR_simulator.F
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/MISR_simulator/MISR_simulator.F .
+./strat_cloud.F90: $(SRCROOT)atmos_phys/atmos_param/strat_cloud/strat_cloud.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/strat_cloud/strat_cloud.F90 .
+./atmos_global_diag.F90: $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_global_diag.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_global_diag.F90 .
+./atmos_tropopause.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tropopause.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tropopause.F90 .
+./lscloud_driver.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_driver.F90 .
+./aerosolrad_package.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_package.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_package.F90 .
+./mo_jpl.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_jpl.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_jpl.F90 .
+./stats_type.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_type.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_type.F90 .
+./aerosol_params.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aerosol_params.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aerosol_params.F90 .
+./moz.subs.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.subs.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.subs.F90 .
+./donner_lscloud_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lscloud_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lscloud_k.F90 .
+./T_in_K_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/T_in_K_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/T_in_K_module.F90 .
+./atmos_cmip_diag.F90: $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_diag.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_diag.F90 .
+./output_netcdf.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_netcdf.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_netcdf.F90 .
+./lw_gases_stdtf.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/lw_gases_stdtf.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/lw_gases_stdtf.F90 .
+./matrix_operations.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/matrix_operations.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/matrix_operations.F90 .
+./anl_erf.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/anl_erf.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/anl_erf.F90 .
+./cosp_stats.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_stats.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_stats.F90 .
+./ozone.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/ozone.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/ozone.F90 .
+./shortwave_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/shortwave_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/shortwave_types.F90 .
+./aerosolrad_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_driver.F90 .
+./format_input.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/format_input.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/format_input.F90 .
+./atmos_tracer_utilities.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_utilities.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_utilities.F90 .
+./stats_variables.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_variables.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_variables.F90 .
+./mo_chemini.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemini.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemini.F90 .
+./optics_lib.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/optics_lib.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/optics_lib.F90 .
+./vert_diff_driver.F90: $(SRCROOT)atmos_phys/atmos_param/vert_diff_driver/vert_diff_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/vert_diff_driver/vert_diff_driver.F90 .
+./mo_chemdr.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemdr.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemdr.F90 .
+./shallow_conv.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_conv/shallow_conv.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_conv/shallow_conv.F90 .
+./CLUBB_driver_SCM.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_driver_SCM.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_driver_SCM.F90 .
+./stats_subs.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_subs.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_subs.F90 .
+./atmos_soa.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_soa.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_soa.F90 .
+./bm_omp.F90: $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_omp.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_omp.F90 .
+./scops.F: $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/scops.F
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/scops.F .
+./cumulus_closure_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/cumulus_closure_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/cumulus_closure_k.F90 .
+./cosp_diagnostics.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_diagnostics.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_diagnostics.F90 .
+./qe_moist_convection.F90: $(SRCROOT)atmos_phys/atmos_param/qe_moist_convection/qe_moist_convection.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/qe_moist_convection/qe_moist_convection.F90 .
+./longwave_clouds.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_clouds.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_clouds.F90 .
+./donner_deep.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep.F90 .
+./diag_cloud.F90: $(SRCROOT)atmos_phys/atmos_param/diag_cloud/diag_cloud.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/diag_cloud/diag_cloud.F90 .
+./fms_platform.h: $(SRCROOT)FMS/include/fms_platform.h
+	cp $(SRCROOT)FMS/include/fms_platform.h .
+./lidar_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lidar_simulator.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lidar_simulator.F90 .
+./convection_utilities.F90: $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_utilities.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_utilities.F90 .
+./parameters_radiation.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_radiation.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_radiation.F90 .
+./atmos_convection_tracer.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_convection_tracer.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_convection_tracer.F90 .
+./donner_deep_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_k.F90 .
+./physics_driver.F90: $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_driver.F90 .
+./conv_utilities.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities.F90 .
+./icarus.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/icarus.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/icarus.F90 .
+./gamma_mg.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/gamma_mg.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/gamma_mg.F90 .
+./polysvp.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/polysvp.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/polysvp.F90 .
+./lscloud_debug.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_debug.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_debug.F90 .
+./advance_sclrm_Nd_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/advance_sclrm_Nd_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/advance_sclrm_Nd_module.F90 .
+./lin_cloud_microphys.F90: $(SRCROOT)atmos_phys/atmos_param/lin_cloud_microphys/lin_cloud_microphys.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lin_cloud_microphys/lin_cloud_microphys.F90 .
+./radar_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator.F90 .
+./atmos_lib.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/atmos_lib.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/atmos_lib.F90 .
+./ls_cloud_microphysics.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90 .
+./moist_processes.F90: $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes.F90 .
+./physics_types.F90: $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_types.F90 .
+./donner_types.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.F90 .
+./morrison_gettelman_microp.F90: $(SRCROOT)atmos_phys/atmos_param/microphysics/morrison_gettelman_microp.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/microphysics/morrison_gettelman_microp.F90 .
+./conv_closures.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_closures.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_closures.F90 .
+./conv_plumes.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes.F90 .
+./longwave_utilities.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90 .
+./tropchem_types_mod.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/tropchem_types_mod.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/tropchem_types_mod.F90 .
+./AM3.mods.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mods.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mods.F90 .
+./atmos_cmip_interp.inc: $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_interp.inc
+	cp $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_interp.inc .
+./interpolation.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/interpolation.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/interpolation.F90 .
+./esfsw_bands.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_bands.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_bands.F90 .
+./clip_semi_implicit.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_semi_implicit.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_semi_implicit.F90 .
+./cloud_chem.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/cloud_chem.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/cloud_chem.F90 .
+./mo_rodas_slv.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_rodas_slv.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_rodas_slv.F90 .
+./deep_conv.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/deep_conv.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/deep_conv.F90 .
+./uw_clouds_W.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/uw_clouds_W.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/uw_clouds_W.F90 .
+./cosp_radar.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/cosp_radar.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/cosp_radar.F90 .
+./parameters_model.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_model.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_model.F90 .
+./alt_cloud.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/alt_cloud.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/alt_cloud.F90 .
+./cosp_types.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_types.F90 .
+./variables_radiation_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_radiation_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_radiation_module.F90 .
+./output_grads.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_grads.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_grads.F90 .
+./calendar.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/calendar.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/calendar.F90 .
+./atmos_regional_tracer_driver.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_regional_tracer_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_regional_tracer_driver.F90 .
+./strat_chem_driver.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_driver.F90 .
+./radiation_driver_diag.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_diag.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_diag.F90 .
+./parameters_microphys.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_microphys.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_microphys.F90 .
+./sigma_sqd_w_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sigma_sqd_w_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sigma_sqd_w_module.F90 .
+./lscloud_types.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_types.F90 .
+./damping_driver.F90: $(SRCROOT)atmos_phys/atmos_param/damping_driver/damping_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/damping_driver/damping_driver.F90 .
+./diffusivity.F90: $(SRCROOT)atmos_phys/atmos_param/diffusivity/diffusivity.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/diffusivity/diffusivity.F90 .
+./mo_photo.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_photo.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_photo.F90 .
+./cu_mo_trans.F90: $(SRCROOT)atmos_phys/atmos_param/cu_mo_trans/cu_mo_trans.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cu_mo_trans/cu_mo_trans.F90 .
+./aerosol_thermodynamics.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/aerosol_thermodynamics.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/aerosol_thermodynamics.F90 .
+./advance_helper_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_helper_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_helper_module.F90 .
+./atmos_sulfate.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfate.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfate.F90 .
+./atmos_carbon_aerosol.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_carbon_aerosol.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_carbon_aerosol.F90 .
 ./AM3.mat.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mat.F90
 	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mat.F90 .
-SRC = $(SRCROOT)atmos_phys/atmos_param/dry_adj/dry_adj.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/saturation.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_model.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isoropiaIIcode.F $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_rttov_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hyper_diffusion_4th_ord.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_subs.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_modis_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/gases.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/isccp_clouds.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_hook.F90 $(SRCROOT)atmos_phys/atmos_param/entrain/entrain.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xm_wpxp_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zm.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lmd_ipsl_stats.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_regional_tracer_driver.F90 $(SRCROOT)atmos_phys/atmos_param/strat_cloud/strat_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/array_lib.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/shortwave_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/vert_advection/vert_advection.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_sfc.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zm.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/MODIS_simulator/modis_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/anl_erf.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_microphys.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_miz.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_type.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/numerical_check.F90 $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_radiation.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_convection_tracer.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/mo_setsox.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_rad/cloud_rad.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities_k.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_diagnostics.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemdr.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cloud_model_k.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/uw_conv.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_global_diag.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_age_tracer.F90 $(SRCROOT)atmos_phys/atmos_param/aerosol_cloud/aerosol_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_generator/betaDistribution.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_types.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/prec_scops.F $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/csr_matrix_class_3array.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mat.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lite_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/T_in_K_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mods.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/atmos_lib.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_types.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_lidar.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_prognostic_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_netcdf.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/rad_output_file.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/scale_LUTs_io.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_tables.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/shortwave_types.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes_k.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lidar_simulator.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_radon.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/math_lib.F90 $(SRCROOT)atmos_phys/atmos_param/cu_mo_trans/cu_mo_trans.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/util/radiation_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/pf_to_mr.F $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/aerosol_thermodynamics.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fphoto.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_3D_var.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_utils.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/icarus.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/polysvp.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/optical_path.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mt95.f90 $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.subs.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/cumulus_closure_k.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/uw_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/format_input.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hydrostatic_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_LH_zt.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_soa.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_conv/shallow_conv.F90 $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90 $(SRCROOT)atmos_phys/atmos_param/topo_drag/topo_drag.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/file_functions.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/check_nan.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stat_file_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_names.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_generator/cloud_generator.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_dust.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch4.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/alt_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_package.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/dsd.F90 $(SRCROOT)atmos_phys/atmos_param/rh_clouds/rh_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_closures.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sigma_sqd_w_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_parameters.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_types.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_k.F90 $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/sealw99.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameter_indices.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/tropchem_types_mod.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zt.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/strat_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_physics/shallow_physics.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/simple_pdf.F90 $(SRCROOT)atmos_phys/atmos_param/diag_cloud_rad/diag_cloud_rad.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90 $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol_types.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_debug.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/diffusion.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_misr_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_closure_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/cloud_chem.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_omp.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sea_salt.F90 $(SRCROOT)atmos_phys/atmos_param/grey_radiation/grey_radiation.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/fms_donner.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_io.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_jpl.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/morrison_gettelman_microp.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_diagnostics.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/cldwat2m_micro.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_tunable.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_package.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_exp_slv.F90 $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes_utils.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_cache.F90 $(SRCROOT)atmos_phys/atmos_param/vert_diff_driver/vert_diff_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_precision.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_types.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_netcdf.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_core.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_params.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_fluxes.F90 $(SRCROOT)atmos_phys/atmos_param/qe_moist_convection/qe_moist_convection.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_nudge/atmos_nudge.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90 $(SRCROOT)atmos_phys/atmos_param/lin_cloud_microphys/lin_cloud_microphys.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_bands.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mean_adv.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/gas_tf.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/isccp_cloud_types.F $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/scops.F $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_rodas_slv.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_read_sim_chm.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_diagnostic_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/lapack_wrap.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_imp_slv.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_utilities_k.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mat.F90 $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/deep_conv.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/corr_matrix_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mods.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aerosol_params.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_driver.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/gamma_mg.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/solar_data_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/matrix_operations.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/lw_gases_stdtf.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch3i.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mono_flux_limiter.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/bulkphys_rad.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloud_spec.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_wp2_wp3_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_parameter_module.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2_utils.F90 $(SRCROOT)atmos_phys/atmos_param/edt/edt.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_constants.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/MISR_simulator/MISR_simulator.F $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fphoto.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/longwave_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/interpolation.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_co2.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_grads.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_isccp_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/damping_driver/damping_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_driver.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/betts_miller.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_meso_k.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_photo.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/rotstayn_klein_mp.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/constants_clubb.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sponge_layer_damping.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/wet_deposition_0D.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_massflux.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/m_tracname.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/array_index.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/ozone.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_windm_edsclrm_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_variables.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_wrap.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_rad_k.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/cosp_radar.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xp2_xpyp_module.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lscloud_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/grid_class.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_reader.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_clouds.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_setinv.F90 $(SRCROOT)atmos_phys/atmos_param/my25_turb/my25_turb.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zt.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_stats.F90 $(SRCROOT)atmos_phys/atmos_param/diag_cloud/diag_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/vert_turb_driver/vert_turb_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_carbon_aerosol.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cape_k.F90 $(SRCROOT)atmos_phys/atmos_param/physics_radiation_exch/physics_radiation_exch.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/extrapolation.F90 $(SRCROOT)atmos_phys/atmos_param/stable_bl_turb/stable_bl_turb.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_nh3_tag.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_semi_implicit.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_driver.F90 $(SRCROOT)atmos_phys/atmos_param/macrophysics/tiedtke_macro.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_driver_SCM.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/vert_diff/vert_diff.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_driver.F90 $(SRCROOT)atmos_phys/atmos_param/two_stream_gray_rad/two_stream_gray_rad.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_model.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/model_flags.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfur_hex.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act_k.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/donner_deep_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/ras/ras.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/llnl_stats.F90 $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/optics_lib.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_usrrxt.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_obs/cloud_obs.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/endian.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_explicit.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/strat_chem_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_radiation_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_init.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clouds/clouds.F90 $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_helper_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/ice_nucl.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_zonal/cloud_zonal.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/error_code.F90 $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pos_definite_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_constants.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfate.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_in_act.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/get_random_number_stream.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/nonfms_donner.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/mrgrnk.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tropopause.F90 $(SRCROOT)atmos_phys/atmos_param/moist_conv/moist_conv.F90 $(SRCROOT)atmos_phys/atmos_param/tke_turb/tke_turb.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/calendar.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/Skw_module.F90 $(SRCROOT)atmos_phys/atmos_param/diffusivity/diffusivity.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fastjx.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_driver.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/detr_ice_num.F90 $(SRCROOT)atmos_phys/atmos_param/cg_drag/cg_drag.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chem_utls.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemini.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/calc_Re.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/surface_varnce_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fastjx.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.subs.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/fill_holes.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/advance_sclrm_Nd_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/congvec.H $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_interp.inc $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.h $(SRCROOT)FMS/include/fms_platform.h $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/recl.inc $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_nml.h $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isrpia.inc
-OBJ = dry_adj.o saturation.o micro_mg2.o parameters_model.o donner_deep.o isoropiaIIcode.o cosp_rttov_simulator.o hyper_diffusion_4th_ord.o stats_subs.o cosp_modis_simulator.o gases.o isccp_clouds.o mo_hook.o entrain.o advance_xm_wpxp_module.o stats_zm.o lmd_ipsl_stats.o atmos_regional_tracer_driver.o strat_cloud.o array_lib.o shortwave_driver.o vert_advection.o stats_sfc.o cosp_driver.o stats_rad_zm.o modis_simulator.o anl_erf.o parameters_microphys.o donner_deep_miz.o atmos_tracer_utilities.o stats_type.o tropchem_driver.o numerical_check.o physics_types.o cloudrad_types.o parameters_radiation.o atmos_convection_tracer.o mo_setsox.o cloud_rad.o radiation_driver.o conv_utilities_k.o cosp_diagnostics.o mo_chemdr.o donner_cloud_model_k.o uw_conv.o atmos_global_diag.o atmos_age_tracer.o aerosol_cloud.o microphys_rad.o betaDistribution.o radiation_driver_types.o prec_scops.o csr_matrix_class_3array.o AM3.mat.o donner_lite_k.o T_in_K_module.o AM3.mods.o atmos_lib.o lscloud_types.o cosp_lidar.o variables_prognostic_module.o output_netcdf.o rad_output_file.o scale_LUTs_io.o longwave_tables.o shortwave_types.o conv_plumes_k.o atmos_cmip_diag.o lidar_simulator.o xactive_bvoc.o atmos_radon.o math_lib.o cu_mo_trans.o radiation_types.o radiation_diag.o pf_to_mr.o aerosol_thermodynamics.o mo_fphoto.o CLUBB_3D_var.o cosp_utils.o icarus.o polysvp.o optical_path.o mt95.o ls_cloud_microphysics.o conv_plumes.o moz.subs.o cumulus_closure_k.o uw_clouds_W.o format_input.o hydrostatic_module.o stats_LH_zt.o atmos_soa.o shallow_conv.o mg_drag.o topo_drag.o radiative_gases_types.o file_functions.o check_nan.o stat_file_module.o esfsw_utilities.o input_names.o cloud_generator.o atmos_dust.o atmos_ch4.o alt_cloud.o aerosolrad_package.o dsd.o rh_clouds.o conv_closures.o sigma_sqd_w_module.o esfsw_parameters.o longwave_types.o donner_deep_k.o moist_processes.o sealw99.o parameter_indices.o tropchem_types_mod.o stats_rad_zt.o strat_clouds_W.o shallow_physics.o simple_pdf.o diag_cloud_rad.o zeff.o aerosol_types.o lscloud_debug.o diffusion.o cosp_misr_simulator.o pdf_closure_module.o cloud_chem.o bm_omp.o atmos_sea_salt.o grey_radiation.o fms_donner.o cosp_io.o mo_jpl.o morrison_gettelman_microp.o cloudrad_diagnostics.o cldwat2m_micro.o parameters_tunable.o cloudrad_package.o mo_exp_slv.o moist_processes_utils.o mixing_length.o cosp_types.o gmres_cache.o vert_diff_driver.o clubb_precision.o radar_simulator_types.o lscloud_netcdf.o clubb_core.o longwave_params.o longwave_fluxes.o qe_moist_convection.o atmos_nudge.o micro_mg.o lin_cloud_microphys.o esfsw_bands.o convection_utilities.o mean_adv.o gas_tf.o isccp_cloud_types.o scops.o radiative_gases.o mo_rodas_slv.o mo_read_sim_chm.o variables_diagnostic_module.o lapack_wrap.o mo_imp_slv.o donner_utilities_k.o moz.mat.o aerosol.o deep_conv.o corr_matrix_module.o moz.mods.o aerosol_params.o strat_chem_driver.o gamma_mg.o solar_data_driver.o cosp.o matrix_operations.o lw_gases_stdtf.o atmos_ch3i.o mono_flux_limiter.o bulkphys_rad.o cloud_spec.o advance_wp2_wp3_module.o pdf_parameter_module.o micro_mg2_utils.o edt.o lscloud_constants.o MISR_simulator.o AM3_fphoto.o longwave_driver.o interpolation.o atmos_co2.o output_grads.o cosp_isccp_simulator.o radar_simulator.o damping_driver.o esfsw_driver.o betts_miller.o donner_meso_k.o mo_photo.o rotstayn_klein_mp.o constants_clubb.o sponge_layer_damping.o wet_deposition_0D.o bm_massflux.o m_tracname.o array_index.o aer_ccn_act.o ozone.o advance_windm_edsclrm_module.o cosp_simulator.o stats_variables.o gmres_wrap.o donner_rad_k.o cosp_radar.o advance_xp2_xpyp_module.o donner_lscloud_k.o grid_class.o donner_types.o input_reader.o longwave_clouds.o mo_setinv.o my25_turb.o stats_zt.o cosp_stats.o diag_cloud.o vert_turb_driver.o atmos_carbon_aerosol.o donner_cape_k.o physics_radiation_exch.o extrapolation.o stable_bl_turb.o atmos_nh3_tag.o clip_semi_implicit.o convection_driver.o tiedtke_macro.o CLUBB_driver_SCM.o conv_utilities.o vert_diff.o lscloud_driver.o two_stream_gray_rad.o strat_chem_model.o model_flags.o atmos_sulfur_hex.o aer_ccn_act_k.o donner_deep_clouds_W.o ras.o llnl_stats.o lscale_cond.o optics_lib.o mo_usrrxt.o radiation_driver_diag.o cloud_obs.o aerosolrad_types.o endian.o clip_explicit.o strat_chem_utilities.o variables_radiation_module.o radar_simulator_init.o cloudrad_driver.o clouds.o ls_cloud_macrophysics.o advance_helper_module.o ice_nucl.o cloud_zonal.o error_code.o physics_driver.o pos_definite_module.o cosp_constants.o atmos_sulfate.o aer_in_act.o get_random_number_stream.o nonfms_donner.o mrgrnk.o atmos_tropopause.o moist_conv.o tke_turb.o calendar.o Skw_module.o diffusivity.o AM3_fastjx.o aerosolrad_driver.o atmos_tracer_driver.o detr_ice_num.o cg_drag.o mo_chem_utls.o mo_chemini.o calc_Re.o surface_varnce_module.o mo_fastjx.o AM3.subs.o fill_holes.o advance_sclrm_Nd_module.o longwave_utilities.o
-OFF = $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mods.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_rad_k.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_nml.h $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemini.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zm.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_types.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_imp_slv.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/rotstayn_klein_mp.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/simple_pdf.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_cache.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_wp2_wp3_module.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/polysvp.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_in_act.F90 $(SRCROOT)atmos_phys/atmos_param/entrain/entrain.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/rad_output_file.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/grid_class.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/uw_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xm_wpxp_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_driver.F90 $(SRCROOT)atmos_phys/atmos_param/vert_diff/vert_diff.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_modis_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/donner_deep_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/diffusion.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act_k.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/fms_donner.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_tables.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/betts_miller.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_package.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_regional_tracer_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloud_spec.F90 $(SRCROOT)atmos_phys/atmos_param/moist_conv/moist_conv.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/extrapolation.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aerosol_params.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/tropchem_types_mod.F90 $(SRCROOT)atmos_phys/atmos_param/macrophysics/tiedtke_macro.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lidar_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/grey_radiation/grey_radiation.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_dust.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/pf_to_mr.F $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/recl.inc $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_core.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_diagnostics.F90 $(SRCROOT)atmos_phys/atmos_param/stable_bl_turb/stable_bl_turb.F90 $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes.F90 $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/saturation.F90 $(SRCROOT)atmos_phys/atmos_param/cg_drag/cg_drag.F90 $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes_utils.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cloud_model_k.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_type.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_variables.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/matrix_operations.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_types.F90 $(SRCROOT)atmos_phys/atmos_param/ras/ras.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.subs.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mods.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_model.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mt95.f90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_explicit.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_miz.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/ozone.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/mrgrnk.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_meso_k.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_generator/cloud_generator.F90 $(SRCROOT)atmos_phys/atmos_param/dry_adj/dry_adj.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_reader.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/dsd.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_radon.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/prec_scops.F $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chem_utls.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/surface_varnce_module.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_conv/shallow_conv.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/morrison_gettelman_microp.F90 $(SRCROOT)FMS/include/fms_platform.h $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zm.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_precision.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_types.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fphoto.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/anl_erf.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isrpia.inc $(SRCROOT)atmos_phys/atmos_param/cloud_rad/cloud_rad.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.subs.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_microphys.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_semi_implicit.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/model_flags.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/nonfms_donner.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_bands.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_radiation.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/fill_holes.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/math_lib.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_parameter_module.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/deep_conv.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/isccp_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zt.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/cloud_chem.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_debug.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_utilities_k.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/gas_tf.F90 $(SRCROOT)atmos_phys/atmos_param/diffusivity/diffusivity.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/icarus.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_model.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lite_k.F90 $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fastjx.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/cldwat2m_micro.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/T_in_K_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_package.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_misr_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_rttov_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/cumulus_closure_k.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/get_random_number_stream.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes_k.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/constants_clubb.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/shortwave_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/mo_setsox.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/advance_sclrm_Nd_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fphoto.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/optical_path.F90 $(SRCROOT)atmos_phys/atmos_param/clouds/clouds.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/strat_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_init.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pos_definite_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/numerical_check.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_LH_zt.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/util/radiation_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/format_input.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_omp.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_hook.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/scale_LUTs_io.F90 $(SRCROOT)atmos_phys/atmos_param/aerosol_cloud/aerosol_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_constants.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/scops.F $(SRCROOT)atmos_phys/atmos_param/microphysics/gamma_mg.F90 $(SRCROOT)atmos_phys/atmos_param/physics_radiation_exch/physics_radiation_exch.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_interp.inc $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_soa.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_physics/shallow_physics.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mono_flux_limiter.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fastjx.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/solar_data_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/lw_gases_stdtf.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sponge_layer_damping.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sea_salt.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_parameters.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2_utils.F90 $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol_types.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/gases.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_types.F90 $(SRCROOT)atmos_phys/atmos_param/strat_cloud/strat_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/uw_conv.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_subs.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfur_hex.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_rodas_slv.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_read_sim_chm.F90 $(SRCROOT)atmos_phys/atmos_param/vert_diff_driver/vert_diff_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/cosp_radar.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/interpolation.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/MODIS_simulator/modis_simulator.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_driver.F90 $(SRCROOT)atmos_phys/atmos_param/qe_moist_convection/qe_moist_convection.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.h $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameter_indices.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mat.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/bulkphys_rad.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases_types.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_nudge/atmos_nudge.F90 $(SRCROOT)atmos_phys/atmos_param/vert_turb_driver/vert_turb_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_params.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_netcdf.F90 $(SRCROOT)atmos_phys/atmos_param/my25_turb/my25_turb.F90 $(SRCROOT)atmos_phys/atmos_param/rh_clouds/rh_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_jpl.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_constants.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_driver_SCM.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_diagnostic_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isoropiaIIcode.F $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zt.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hydrostatic_module.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_obs/cloud_obs.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemdr.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/detr_ice_num.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/congvec.H $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sigma_sqd_w_module.F90 $(SRCROOT)atmos_phys/atmos_param/edt/edt.F90 $(SRCROOT)atmos_phys/atmos_param/diag_cloud_rad/diag_cloud_rad.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/error_code.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/file_functions.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/llnl_stats.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/optics_lib.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_massflux.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch3i.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_io.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/check_nan.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stat_file_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_stats.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_isccp_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_closure_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/aerosol_thermodynamics.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/calendar.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/array_lib.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_utils.F90 $(SRCROOT)atmos_phys/atmos_param/diag_cloud/diag_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_windm_edsclrm_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfate.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_wrap.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/Skw_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/longwave_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/isccp_cloud_types.F $(SRCROOT)atmos_phys/atmos_param/clubb/alt_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/cu_mo_trans/cu_mo_trans.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/array_index.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hyper_diffusion_4th_ord.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_co2.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_netcdf.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/m_tracname.F90 $(SRCROOT)atmos_phys/atmos_param/topo_drag/topo_drag.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lmd_ipsl_stats.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_diagnostics.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/corr_matrix_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_zonal/cloud_zonal.F90 $(SRCROOT)atmos_phys/atmos_param/lin_cloud_microphys/lin_cloud_microphys.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_types.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities_k.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/atmos_lib.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/strat_chem_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/lapack_wrap.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_names.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_lidar.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_generator/betaDistribution.F90 $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_closures.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch4.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_radiation_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_grads.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_setinv.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/wet_deposition_0D.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_global_diag.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_photo.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_fluxes.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_driver.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cape_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mean_adv.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/MISR_simulator/MISR_simulator.F $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_tunable.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/csr_matrix_class_3array.F90 $(SRCROOT)atmos_phys/atmos_param/two_stream_gray_rad/two_stream_gray_rad.F90 $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/shortwave_types.F90 $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tropopause.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_convection_tracer.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_3D_var.F90 $(SRCROOT)atmos_phys/atmos_param/damping_driver/damping_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_carbon_aerosol.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lscloud_k.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/calc_Re.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_age_tracer.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_exp_slv.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/ice_nucl.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_nh3_tag.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/sealw99.F90 $(SRCROOT)atmos_phys/atmos_param/tke_turb/tke_turb.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_usrrxt.F90 $(SRCROOT)atmos_phys/atmos_shared/vert_advection/vert_advection.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xp2_xpyp_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_sfc.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_helper_module.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg2.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_prognostic_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/endian.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mat.F90
+./moz.mods.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mods.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mods.F90 .
+./clouds.F90: $(SRCROOT)atmos_phys/atmos_param/clouds/clouds.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clouds/clouds.F90 .
+./radiation_diag.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/util/radiation_diag.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/util/radiation_diag.F90 .
+./betaDistribution.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_generator/betaDistribution.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cloud_generator/betaDistribution.F90 .
+./model_flags.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/model_flags.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/model_flags.F90 .
+./longwave_fluxes.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_fluxes.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_fluxes.F90 .
+./cosp_misr_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_misr_simulator.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_misr_simulator.F90 .
+./cg_drag.F90: $(SRCROOT)atmos_phys/atmos_param/cg_drag/cg_drag.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cg_drag/cg_drag.F90 .
+./optical_path.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/optical_path.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/optical_path.F90 .
+./donner_cloud_model_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cloud_model_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cloud_model_k.F90 .
+./aerosol_cloud.F90: $(SRCROOT)atmos_phys/atmos_param/aerosol_cloud/aerosol_cloud.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/aerosol_cloud/aerosol_cloud.F90 .
+./saturation.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/saturation.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/saturation.F90 .
+./cosp_utils.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_utils.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_utils.F90 .
+./moist_processes_utils.F90: $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes_utils.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes_utils.F90 .
+./cosp.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp.F90 .
+./extrapolation.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/extrapolation.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/extrapolation.F90 .
+./pdf_parameter_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_parameter_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_parameter_module.F90 .
+./shallow_physics.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_physics/shallow_physics.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_physics/shallow_physics.F90 .
+./array_lib.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/array_lib.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/array_lib.F90 .
+./gmres_wrap.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_wrap.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_wrap.F90 .
+./cloud_obs.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_obs/cloud_obs.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cloud_obs/cloud_obs.F90 .
+./atmos_dust.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_dust.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_dust.F90 .
+./lscale_cond.F90: $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90 .
+./topo_drag.F90: $(SRCROOT)atmos_phys/atmos_param/topo_drag/topo_drag.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/topo_drag/topo_drag.F90 .
+./isoropiaIIcode.F: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isoropiaIIcode.F
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isoropiaIIcode.F .
+./congvec.H: $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/congvec.H
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/congvec.H .
+./tropchem_driver.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem_driver.F90 .
+./fms_donner.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/fms_donner.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/fms_donner.F90 .
+./clubb_core.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_core.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_core.F90 .
+./grey_radiation.F90: $(SRCROOT)atmos_phys/atmos_param/grey_radiation/grey_radiation.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/grey_radiation/grey_radiation.F90 .
+./aerosolrad_types.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_types.F90 .
+./stats_rad_zm.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zm.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zm.F90 .
+./csr_matrix_class_3array.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/csr_matrix_class_3array.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/csr_matrix_class_3array.F90 .
+./cloudrad_diagnostics.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_diagnostics.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_diagnostics.F90 .
+./grid_class.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/grid_class.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/grid_class.F90 .
+./stats_sfc.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_sfc.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_sfc.F90 .
+./isccp_cloud_types.F: $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/isccp_cloud_types.F
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/isccp_cloud_types.F .
+./cloud_spec.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloud_spec.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloud_spec.F90 .
+./atmos_ch4.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch4.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch4.F90 .
+./lscloud_netcdf.F90: $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_netcdf.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_netcdf.F90 .
+./llnl_stats.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/llnl_stats.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/llnl_stats.F90 .
+./entrain.F90: $(SRCROOT)atmos_phys/atmos_param/entrain/entrain.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/entrain/entrain.F90 .
+./mg_drag.F90: $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90 .
+./esfsw_parameters.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_parameters.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_parameters.F90 .
+./strat_chem_model.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_model.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_model.F90 .
+./advance_wp2_wp3_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_wp2_wp3_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_wp2_wp3_module.F90 .
+./clubb_precision.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_precision.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_precision.F90 .
+./file_functions.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/file_functions.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/file_functions.F90 .
+./rad_output_file.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/driver/rad_output_file.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/driver/rad_output_file.F90 .
+./donner_rad_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_rad_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_rad_k.F90 .
+./atmos_age_tracer.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_age_tracer.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_age_tracer.F90 .
+./input_reader.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_reader.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_reader.F90 .
+./donner_types.h: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.h
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.h .
+./atmos_ch3i.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch3i.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch3i.F90 .
+./donner_utilities_k.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_utilities_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_utilities_k.F90 .
+./wet_deposition_0D.F90: $(SRCROOT)atmos_phys/atmos_param/donner_deep/wet_deposition_0D.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/donner_deep/wet_deposition_0D.F90 .
+./constants_clubb.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/constants_clubb.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/constants_clubb.F90 .
+./variables_diagnostic_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_diagnostic_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_diagnostic_module.F90 .
+./mo_usrrxt.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_usrrxt.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_usrrxt.F90 .
+./aer_in_act.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_in_act.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_in_act.F90 .
+./mo_fphoto.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fphoto.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fphoto.F90 .
+./get_random_number_stream.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/get_random_number_stream.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/get_random_number_stream.F90 .
+./hydrostatic_module.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hydrostatic_module.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hydrostatic_module.F90 .
+./CLUBB_3D_var.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_3D_var.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_3D_var.F90 .
+./stats_zt.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zt.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zt.F90 .
+./detr_ice_num.F90: $(SRCROOT)atmos_phys/atmos_param/convection_driver/detr_ice_num.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/convection_driver/detr_ice_num.F90 .
+./cloudrad_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_driver.F90 .
+./mo_setsox.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/mo_setsox.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/mo_setsox.F90 .
+./recl.inc: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/recl.inc
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/recl.inc .
+./atmos_tracer_driver.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_driver.F90 .
+./cloud_generator.F90: $(SRCROOT)atmos_phys/atmos_param/cloud_generator/cloud_generator.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cloud_generator/cloud_generator.F90 .
+./atmos_co2.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_co2.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_co2.F90 .
+./ras.F90: $(SRCROOT)atmos_phys/atmos_param/ras/ras.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/ras/ras.F90 .
+./cosp_rttov_simulator.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_rttov_simulator.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_rttov_simulator.F90 .
+./aer_ccn_act_k.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act_k.F90 .
+./parameters_tunable.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_tunable.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_tunable.F90 .
+./conv_plumes_k.F90: $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes_k.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes_k.F90 .
+./mo_imp_slv.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_imp_slv.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_imp_slv.F90 .
+./atmos_radon.F90: $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_radon.F90
+	cp $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_radon.F90 .
+./calc_Re.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/calc_Re.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/calc_Re.F90 .
+./gmres_cache.F90: $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_cache.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_cache.F90 .
+./scale_LUTs_io.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/scale_LUTs_io.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/scale_LUTs_io.F90 .
+./radar_simulator_init.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_init.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_init.F90 .
+./esfsw_driver.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_driver.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_driver.F90 .
+./radar_simulator_types.F90: $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_types.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_types.F90 .
+./sealw99.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/sealw99.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/sealw99.F90 .
+./ls_cloud_macrophysics.F90: $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90 .
+./donner_deep_clouds_W.F90: $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/donner_deep_clouds_W.F90
+	cp $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/donner_deep_clouds_W.F90 .
+SRC = $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_miz.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lidar_simulator.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_global_diag.F90 $(SRCROOT)atmos_phys/atmos_param/diffusivity/diffusivity.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_prognostic_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/longwave_driver.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_usrrxt.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_types.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_utilities.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_exp_slv.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_diagnostics.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloud_spec.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/anl_erf.F90 $(SRCROOT)atmos_phys/atmos_param/dry_adj/dry_adj.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_utils.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mods.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_driver.F90 $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes_utils.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/format_input.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/Skw_module.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_k.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_jpl.F90 $(SRCROOT)atmos_phys/atmos_param/lin_cloud_microphys/lin_cloud_microphys.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_modis_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_io.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sea_salt.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/corr_matrix_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/T_in_K_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fastjx.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_obs/cloud_obs.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_init.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/MODIS_simulator/modis_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_netcdf.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_bands.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/fms_donner.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/endian.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_debug.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_regional_tracer_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/mrgrnk.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sponge_layer_damping.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/shortwave_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_read_sim_chm.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zt.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/simple_pdf.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/MISR_simulator/MISR_simulator.F $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/matrix_operations.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_semi_implicit.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_variables.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_driver.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/isccp_cloud_types.F $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_tunable.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/strat_chem_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/atmos_lib.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_wp2_wp3_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/lapack_wrap.F90 $(SRCROOT)atmos_phys/atmos_param/tke_turb/tke_turb.F90 $(SRCROOT)atmos_phys/atmos_param/vert_turb_driver/vert_turb_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/solar_data_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/icarus.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_driver.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_constants.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_windm_edsclrm_module.F90 $(SRCROOT)atmos_phys/atmos_param/aerosol_cloud/aerosol_cloud.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/cloud_chem.F90 $(SRCROOT)atmos_phys/atmos_param/damping_driver/damping_driver.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_omp.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_photo.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_package.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lmd_ipsl_stats.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/shortwave_types.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_driver.F90 $(SRCROOT)atmos_phys/atmos_param/physics_radiation_exch/physics_radiation_exch.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemini.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_3D_var.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lite_k.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_diagnostics.F90 $(SRCROOT)atmos_phys/atmos_param/diag_cloud_rad/diag_cloud_rad.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_helper_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_lidar.F90 $(SRCROOT)atmos_phys/atmos_param/clouds/clouds.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/scale_LUTs_io.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zm.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tropopause.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_convection_tracer.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/gas_tf.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_nudge/atmos_nudge.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_conv/shallow_conv.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_setinv.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/polysvp.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/saturation.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_sfc.F90 $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mods.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_co2.F90 $(SRCROOT)atmos_phys/atmos_param/vert_diff_driver/vert_diff_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mt95.f90 $(SRCROOT)atmos_phys/atmos_param/radiation/util/radiation_diag.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_radiation_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zm.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch3i.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/array_lib.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fphoto.F90  $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_nh3_tag.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_carbon_aerosol.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_package.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_model.F90 $(SRCROOT)atmos_phys/atmos_param/strat_cloud/strat_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/isccp_clouds.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch4.F90 $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_closures.F90 $(SRCROOT)atmos_phys/atmos_param/edt/edt.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_grads.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_parameter_module.F90 $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90 $(SRCROOT)atmos_phys/atmos_param/qe_moist_convection/qe_moist_convection.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_wrap.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/surface_varnce_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/array_index.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cg_drag/cg_drag.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_types.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/detr_ice_num.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_rttov_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/gases.F90 $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_in_act.F90 $(SRCROOT)atmos_phys/atmos_param/topo_drag/topo_drag.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/ozone.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/error_code.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_driver.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cape_k.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/dsd.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_types.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfate.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cloud_model_k.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/sealw99.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hydrostatic_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemdr.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_fluxes.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/get_random_number_stream.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/calendar.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mat.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pos_definite_module.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_meso_k.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90 $(SRCROOT)atmos_phys/atmos_param/two_stream_gray_rad/two_stream_gray_rad.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/lw_gases_stdtf.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/cosp_radar.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.subs.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfur_hex.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sigma_sqd_w_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_age_tracer.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/donner_deep_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/uw_conv.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_rodas_slv.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_constants.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/rad_output_file.F90 $(SRCROOT)atmos_phys/atmos_param/stable_bl_turb/stable_bl_turb.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/llnl_stats.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_cache.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isoropiaIIcode.F $(SRCROOT)atmos_phys/atmos_param/microphysics/gamma_mg.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hyper_diffusion_4th_ord.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_precision.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/extrapolation.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aerosol_params.F90 $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_type.F90 $(SRCROOT)atmos_phys/atmos_shared/vert_advection/vert_advection.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/numerical_check.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_netcdf.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_generator/betaDistribution.F90 $(SRCROOT)atmos_phys/atmos_param/rh_clouds/rh_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/wet_deposition_0D.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_utilities_k.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/mo_setsox.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xp2_xpyp_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/alt_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/math_lib.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/optical_path.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_rad_k.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_isccp_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/bulkphys_rad.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_names.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mean_adv.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_explicit.F90 $(SRCROOT)atmos_phys/atmos_param/moist_conv/moist_conv.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_hook.F90 $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes_k.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/aerosol_thermodynamics.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/cldwat2m_micro.F90 $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_LH_zt.F90 $(SRCROOT)atmos_phys/atmos_param/grey_radiation/grey_radiation.F90 $(SRCROOT)atmos_phys/atmos_param/cu_mo_trans/cu_mo_trans.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_driver_SCM.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_closure_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mono_flux_limiter.F90 $(SRCROOT)atmos_phys/atmos_param/macrophysics/tiedtke_macro.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mat.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fphoto.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/csr_matrix_class_3array.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/check_nan.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/diag_cloud/diag_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/interpolation.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/deep_conv.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_microphys.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/tropchem_types_mod.F90 $(SRCROOT)atmos_phys/atmos_param/ras/ras.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stat_file_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_diagnostic_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/scops.F $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_stats.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chem_utls.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_generator/cloud_generator.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_reader.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/advance_sclrm_Nd_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_radiation.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/grid_class.F90 $(SRCROOT)atmos_phys/atmos_param/entrain/entrain.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameter_indices.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities_k.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/uw_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_params.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_model.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.subs.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/model_flags.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/nonfms_donner.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_rad/cloud_rad.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/fill_holes.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/betts_miller.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/constants_clubb.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/pf_to_mr.F $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_misr_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_types.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_massflux.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/diffusion.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_soa.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_tables.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/ice_nucl.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xm_wpxp_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/strat_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/m_tracname.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_core.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_parameters.F90 $(SRCROOT)atmos_phys/atmos_param/my25_turb/my25_turb.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_radon.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_zonal/cloud_zonal.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lscloud_k.F90 $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90 $(SRCROOT)atmos_phys/atmos_param/vert_diff/vert_diff.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fastjx.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/prec_scops.F $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_subs.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_imp_slv.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/morrison_gettelman_microp.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/rotstayn_klein_mp.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_physics/shallow_physics.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_dust.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zt.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/file_functions.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/optics_lib.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/calc_Re.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_types.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/cumulus_closure_k.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_nml.h $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_interp.inc $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isrpia.inc $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/recl.inc $(SRCROOT)FMS/include/fms_platform.h $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.h $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/congvec.H
+OBJ = donner_deep_miz.o lidar_simulator.o atmos_global_diag.o diffusivity.o cosp_simulator.o variables_prognostic_module.o longwave_driver.o donner_types.o mo_usrrxt.o radar_simulator_types.o convection_utilities.o mo_exp_slv.o longwave_types.o cloudrad_diagnostics.o cloud_spec.o anl_erf.o dry_adj.o cosp_utils.o AM3.mods.o lscloud_driver.o moist_processes_utils.o format_input.o Skw_module.o donner_deep_k.o mo_jpl.o lin_cloud_microphys.o cosp_modis_simulator.o cosp_io.o atmos_sea_salt.o corr_matrix_module.o T_in_K_module.o AM3_fastjx.o zeff.o radiation_driver_diag.o cloud_obs.o radar_simulator_init.o modis_simulator.o lscloud_netcdf.o esfsw_bands.o fms_donner.o endian.o lscloud_debug.o atmos_regional_tracer_driver.o mrgrnk.o sponge_layer_damping.o shortwave_driver.o mo_read_sim_chm.o stats_zt.o simple_pdf.o MISR_simulator.o cloudrad_types.o matrix_operations.o clip_semi_implicit.o stats_variables.o cloudrad_driver.o conv_utilities.o isccp_cloud_types.o parameters_tunable.o strat_chem_utilities.o atmos_lib.o advance_wp2_wp3_module.o lapack_wrap.o tke_turb.o vert_turb_driver.o solar_data_driver.o icarus.o atmos_tracer_driver.o lscloud_constants.o conv_plumes.o advance_windm_edsclrm_module.o aerosol_cloud.o cloud_chem.o damping_driver.o bm_omp.o mo_photo.o cloudrad_package.o lmd_ipsl_stats.o shortwave_types.o strat_chem_driver.o physics_radiation_exch.o mo_chemini.o CLUBB_3D_var.o donner_lite_k.o cosp_diagnostics.o diag_cloud_rad.o advance_helper_module.o cosp_lidar.o clouds.o scale_LUTs_io.o stats_zm.o atmos_tropopause.o atmos_convection_tracer.o gas_tf.o atmos_nudge.o shallow_conv.o mo_setinv.o polysvp.o aer_ccn_act_k.o saturation.o stats_sfc.o physics_driver.o moz.mods.o atmos_co2.o vert_diff_driver.o mt95.o radiation_diag.o variables_radiation_module.o stats_rad_zm.o radiative_gases.o atmos_ch3i.o array_lib.o mo_fphoto.o atmos_nh3_tag.o mixing_length.o atmos_carbon_aerosol.o aerosolrad_package.o strat_chem_model.o strat_cloud.o isccp_clouds.o atmos_ch4.o aerosol.o conv_closures.o edt.o output_grads.o convection_driver.o pdf_parameter_module.o lscale_cond.o qe_moist_convection.o gmres_wrap.o surface_varnce_module.o array_index.o atmos_cmip_diag.o cg_drag.o cosp_types.o detr_ice_num.o cosp_rttov_simulator.o gases.o ls_cloud_macrophysics.o aer_in_act.o topo_drag.o ozone.o ls_cloud_microphysics.o esfsw_utilities.o error_code.o aerosolrad_driver.o donner_cape_k.o dsd.o lscloud_types.o atmos_sulfate.o donner_cloud_model_k.o sealw99.o hydrostatic_module.o mo_chemdr.o longwave_fluxes.o get_random_number_stream.o calendar.o moz.mat.o radiation_driver.o donner_deep.o pos_definite_module.o donner_meso_k.o microphys_rad.o two_stream_gray_rad.o lw_gases_stdtf.o cosp_radar.o moz.subs.o atmos_sulfur_hex.o longwave_utilities.o sigma_sqd_w_module.o atmos_age_tracer.o donner_deep_clouds_W.o uw_conv.o mo_rodas_slv.o cosp_constants.o cosp.o rad_output_file.o stable_bl_turb.o radar_simulator.o llnl_stats.o gmres_cache.o isoropiaIIcode.o gamma_mg.o hyper_diffusion_4th_ord.o clubb_precision.o extrapolation.o tropchem_driver.o aerosol_params.o aerosol_types.o stats_type.o vert_advection.o numerical_check.o aerosolrad_types.o output_netcdf.o betaDistribution.o rh_clouds.o wet_deposition_0D.o donner_utilities_k.o mo_setsox.o advance_xp2_xpyp_module.o alt_cloud.o math_lib.o optical_path.o donner_rad_k.o cosp_isccp_simulator.o bulkphys_rad.o input_names.o mean_adv.o clip_explicit.o moist_conv.o mo_hook.o moist_processes.o conv_plumes_k.o aerosol_thermodynamics.o cldwat2m_micro.o physics_types.o stats_LH_zt.o grey_radiation.o cu_mo_trans.o CLUBB_driver_SCM.o pdf_closure_module.o mono_flux_limiter.o tiedtke_macro.o AM3.mat.o AM3_fphoto.o atmos_tracer_utilities.o csr_matrix_class_3array.o check_nan.o longwave_clouds.o diag_cloud.o interpolation.o deep_conv.o radiative_gases_types.o parameters_microphys.o tropchem_types_mod.o ras.o stat_file_module.o variables_diagnostic_module.o scops.o cosp_stats.o mo_chem_utls.o cloud_generator.o input_reader.o advance_sclrm_Nd_module.o xactive_bvoc.o parameters_radiation.o cosp_driver.o grid_class.o entrain.o parameter_indices.o conv_utilities_k.o uw_clouds_W.o longwave_params.o parameters_model.o AM3.subs.o aer_ccn_act.o model_flags.o micro_mg.o nonfms_donner.o cloud_rad.o fill_holes.o betts_miller.o constants_clubb.o pf_to_mr.o cosp_misr_simulator.o radiation_types.o bm_massflux.o diffusion.o atmos_soa.o longwave_tables.o ice_nucl.o advance_xm_wpxp_module.o strat_clouds_W.o m_tracname.o clubb_core.o esfsw_parameters.o my25_turb.o atmos_radon.o cloud_zonal.o donner_lscloud_k.o mg_drag.o vert_diff.o mo_fastjx.o prec_scops.o stats_subs.o mo_imp_slv.o morrison_gettelman_microp.o rotstayn_klein_mp.o shallow_physics.o atmos_dust.o stats_rad_zt.o file_functions.o optics_lib.o calc_Re.o radiation_driver_types.o cumulus_closure_k.o esfsw_driver.o
+OFF = $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/gases.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xp2_xpyp_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sea_salt.F90 $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol_types.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_isccp_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/isccp_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_modis_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/vert_diff/vert_diff.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zt.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/fill_holes.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_package.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/rotstayn_klein_mp.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/pf_to_mr.F $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/diffusion.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_driver.F90 $(SRCROOT)atmos_phys/atmos_param/edt/edt.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/check_nan.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_xm_wpxp_module.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_io.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/dsd.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_types.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_setinv.F90 $(SRCROOT)atmos_phys/atmos_param/my25_turb/my25_turb.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_closure_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act.F90 $(SRCROOT)atmos_phys/atmos_param/macrophysics/tiedtke_macro.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities_k.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_constants.F90 $(SRCROOT)atmos_phys/atmos_param/stable_bl_turb/stable_bl_turb.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/uw_conv.F90 $(SRCROOT)atmos_phys/atmos_param/physics_radiation_exch/physics_radiation_exch.F90 $(SRCROOT)atmos_phys/atmos_param/vert_turb_driver/vert_turb_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/shortwave_driver.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/array_index.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mono_flux_limiter.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/surface_varnce_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_types.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_miz.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_massflux.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/diag_cloud_rad/diag_cloud_rad.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_hook.F90 $(SRCROOT)atmos_phys/atmos_param/rh_clouds/rh_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/radiative_gases_types.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/zeff.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/ice_nucl.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfur_hex.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_meso_k.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/strat_chem_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mixing_length.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/gas_tf.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_names.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mt95.f90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_exp_slv.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mat.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/microphys_rad.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_params.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_tables.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_defs.H $(SRCROOT)atmos_phys/atmos_param/cloud_rad/cloud_rad.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fastjx.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/betts_miller.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_nudge/atmos_nudge.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_lidar.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/strat_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_shared/aerosol/aerosol.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/corr_matrix_module.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lite_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/Skw_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/longwave_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/vert_advection/vert_advection.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/prec_scops.F $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3_fphoto.F90 $(SRCROOT)atmos_phys/atmos_param/two_stream_gray_rad/two_stream_gray_rad.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fastjx.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isrpia.inc $(SRCROOT)atmos_phys/atmos_param/moist_conv/moist_conv.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_explicit.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.subs.F90 $(SRCROOT)atmos_phys/atmos_param/dry_adj/dry_adj.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_prognostic_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/endian.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/error_code.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zm.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/simple_pdf.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pos_definite_module.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/nonfms_donner.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/lapack_wrap.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/math_lib.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameter_indices.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_driver.F90 $(SRCROOT)atmos_phys/atmos_param/tke_turb/tke_turb.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/m_tracname.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cape_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/mean_adv.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/MODIS_simulator/modis_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lmd_ipsl_stats.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_read_sim_chm.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_nml.h $(SRCROOT)atmos_phys/atmos_param/microphysics/micro_mg.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/solar_data_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chem_utls.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/mrgrnk.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stat_file_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hyper_diffusion_4th_ord.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sponge_layer_damping.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/numerical_check.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/cldwat2m_micro.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_windm_edsclrm_module.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/bulkphys_rad.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_nh3_tag.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_constants.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/xactive_bvoc.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_zonal/cloud_zonal.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_LH_zt.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/MISR_simulator/MISR_simulator.F $(SRCROOT)atmos_phys/atmos_param/strat_cloud/strat_cloud.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_global_diag.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tropopause.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_package.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_jpl.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_type.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aerosol_params.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.subs.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_lscloud_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/T_in_K_module.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_diag.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_netcdf.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/lw_gases_stdtf.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/matrix_operations.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/anl_erf.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_stats.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/radiative_gases/ozone.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/shortwave_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/format_input.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_variables.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemini.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/optics_lib.F90 $(SRCROOT)atmos_phys/atmos_param/vert_diff_driver/vert_diff_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_chemdr.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_conv/shallow_conv.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_driver_SCM.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_subs.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_soa.F90 $(SRCROOT)atmos_phys/atmos_param/betts_miller/bm_omp.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/scops.F $(SRCROOT)atmos_phys/atmos_param/donner_deep/cumulus_closure_k.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_diagnostics.F90 $(SRCROOT)atmos_phys/atmos_param/qe_moist_convection/qe_moist_convection.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_clouds.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep.F90 $(SRCROOT)atmos_phys/atmos_param/diag_cloud/diag_cloud.F90 $(SRCROOT)FMS/include/fms_platform.h $(SRCROOT)atmos_phys/atmos_param/cosp/actsim/lidar_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/convection_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_radiation.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_convection_tracer.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_deep_k.F90 $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_driver.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_utilities.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/icarus.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/gamma_mg.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/polysvp.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_debug.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/advance_sclrm_Nd_module.F90 $(SRCROOT)atmos_phys/atmos_param/lin_cloud_microphys/lin_cloud_microphys.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/atmos_lib.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/ls_cloud_microphysics.F90 $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes.F90 $(SRCROOT)atmos_phys/atmos_param/physics_driver/physics_types.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.F90 $(SRCROOT)atmos_phys/atmos_param/microphysics/morrison_gettelman_microp.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_closures.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_utilities.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/tropchem_types_mod.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mods.F90 $(SRCROOT)atmos_phys/atmos_shared/atmos_cmip_diag/atmos_cmip_interp.inc $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/interpolation.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_bands.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clip_semi_implicit.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/cloud_chem.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_rodas_slv.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/deep_conv.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/uw_clouds_W.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/cosp_radar.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_model.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/alt_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_radiation_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/output_grads.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/calendar.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_regional_tracer_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_driver.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/radiation_driver_diag.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_microphys.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/sigma_sqd_w_module.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_types.F90 $(SRCROOT)atmos_phys/atmos_param/damping_driver/damping_driver.F90 $(SRCROOT)atmos_phys/atmos_param/diffusivity/diffusivity.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_photo.F90 $(SRCROOT)atmos_phys/atmos_param/cu_mo_trans/cu_mo_trans.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/aerosol_thermodynamics.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_helper_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_sulfate.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_carbon_aerosol.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM3_chem/AM3.mat.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/moz.mods.F90 $(SRCROOT)atmos_phys/atmos_param/clouds/clouds.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/util/radiation_diag.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_generator/betaDistribution.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/model_flags.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/longwave_fluxes.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_misr_simulator.F90 $(SRCROOT)atmos_phys/atmos_param/cg_drag/cg_drag.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/optical_path.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_cloud_model_k.F90 $(SRCROOT)atmos_phys/atmos_param/aerosol_cloud/aerosol_cloud.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/saturation.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_utils.F90 $(SRCROOT)atmos_phys/atmos_param/moist_processes/moist_processes_utils.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/extrapolation.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/pdf_parameter_module.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_physics/shallow_physics.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/array_lib.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_wrap.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_obs/cloud_obs.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_dust.F90 $(SRCROOT)atmos_phys/atmos_param/lscale_cond/lscale_cond.F90 $(SRCROOT)atmos_phys/atmos_param/topo_drag/topo_drag.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/isoropiaIIcode.F $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/congvec.H $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem_driver.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/fms_donner.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_core.F90 $(SRCROOT)atmos_phys/atmos_param/grey_radiation/grey_radiation.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/aerosols/aerosolrad_types.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_rad_zm.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/csr_matrix_class_3array.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_diagnostics.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/grid_class.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_sfc.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/icarus-scops-3.7/isccp_cloud_types.F $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloud_spec.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch4.F90 $(SRCROOT)atmos_phys/atmos_param/lscloud_driver/lscloud_netcdf.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/llnl/llnl_stats.F90 $(SRCROOT)atmos_phys/atmos_param/entrain/entrain.F90 $(SRCROOT)atmos_phys/atmos_param/mg_drag/mg_drag.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_parameters.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/stratchem/strat_chem_model.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/advance_wp2_wp3_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/clubb_precision.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/file_functions.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/driver/rad_output_file.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_rad_k.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_age_tracer.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/input_reader.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_types.h $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_ch3i.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/donner_utilities_k.F90 $(SRCROOT)atmos_phys/atmos_param/donner_deep/wet_deposition_0D.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/constants_clubb.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/variables_diagnostic_module.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_usrrxt.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_in_act.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/AM4_chem/mo_fphoto.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/get_random_number_stream.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/hydrostatic_module.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_3D_var.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/stats_zt.F90 $(SRCROOT)atmos_phys/atmos_param/convection_driver/detr_ice_num.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/cloudrad_driver.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/mo_setsox.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/recl.inc $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_tracer_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cloud_generator/cloud_generator.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_co2.F90 $(SRCROOT)atmos_phys/atmos_param/ras/ras.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/cosp_rttov_simulator.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/aer_ccn_act/aer_ccn_act_k.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/parameters_tunable.F90 $(SRCROOT)atmos_phys/atmos_param/shallow_cu/conv_plumes_k.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/tropchem/mo_imp_slv.F90 $(SRCROOT)atmos_phys/atmos_shared/tracer_driver/atmos_radon.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/calc_Re.F90 $(SRCROOT)atmos_phys/atmos_param/clubb/CLUBB_core/gmres_cache.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/scale_LUTs_io.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_init.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/shortwave/esfsw_driver.F90 $(SRCROOT)atmos_phys/atmos_param/cosp/quickbeam/radar_simulator_types.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/longwave/sealw99.F90 $(SRCROOT)atmos_phys/atmos_param/macrophysics/ls_cloud_macrophysics.F90 $(SRCROOT)atmos_phys/atmos_param/radiation/clouds/donner_deep_clouds_W.F90
 clean: neat
 	-rm -f .libatmos_phys.a.cppdefs $(OBJ) libatmos_phys.a
 
