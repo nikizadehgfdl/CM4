@@ -1,9 +1,9 @@
 # Makefile created by mkmf 2022.01.00
-
-
 CPPDEFS = -DINTERNAL_FILE_NML -g -DUSE_FMS2_IO
 
-OTHERFLAGS = -I$(BUILDROOT)mom6 -I$(BUILDROOT)fms/build/.mods -I$(SRCROOT)FMS/include
+OTHERFLAGS = -I$(BUILDROOT)mom6 -I$(BUILDROOT)fms -I$(SRCROOT)FMS/include
+
+TMPFILES = *.o *.mod
 
 include $(MK_TEMPLATE)
 

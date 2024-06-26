@@ -2,7 +2,9 @@
 
 CPPDEFS = -DINTERNAL_FILE_NML -g
 
-OTHERFLAGS = -I$(BUILDROOT)atmos_drv -I$(BUILDROOT)sis2 -I$(BUILDROOT)atmos_cubed_sphere -I$(BUILDROOT)atmos_phys -I$(BUILDROOT)mom6 -I$(BUILDROOT)land_lad2 -I$(BUILDROOT)fms/build/.mods -I$(SRCROOT)FMS/include
+TMPFILES = *.o *.mod
+
+OTHERFLAGS = -I$(BUILDROOT)atmos_drv -I$(BUILDROOT)sis2 -I$(BUILDROOT)atmos_cubed_sphere -I$(BUILDROOT)atmos_phys -I$(BUILDROOT)mom6 -I$(BUILDROOT)land_lad2 -I$(BUILDROOT)fms -I$(SRCROOT)FMS/include
 
 include $(MK_TEMPLATE)
 

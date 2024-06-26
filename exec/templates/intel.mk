@@ -6,9 +6,9 @@
 ############
 # Commands Macros
 ############
-FC = ftn
-CC = cc
-LD = ftn
+FC = mpif90
+CC = mpicc
+LD = mpif90
 
 #######################
 # Build target macros
@@ -83,7 +83,7 @@ endif
 CPPDEFS += -Duse_netCDF
 
 # Additional Preprocessor Macros needed due to  Autotools and CMake
-CPPDEFS += -DHAVE_SCHED_GETAFFINITY -DHAVE_GETTID
+#CPPDEFS += -DHAVE_SCHED_GETAFFINITY -DHAVE_GETTID
 
 # Macro for Fortran preprocessor
 FPPFLAGS := -fpp -Wp,-w $(INCLUDES)
@@ -155,7 +155,8 @@ LDFLAGS_COVERAGE = -prof-gen=srcpos
 
 # List of -L library directories to be added to the compile and linking commands
 LIBS := $(shell pkg-config --libs yaml-0.1) $(shell nc-config --libs)
-
+LIBS += -L/usr/local/hdf5/intel-19.1/openmpi-4.1.0/1.10.6/lib64
+LIBS += -lnetcdf -lnetcdff -lhdf5_fortran -lhdf5_hl -lhdf5
 # Get compile flags based on target macros.
 ifdef REPRO
 CFLAGS += $(CFLAGS_REPRO)

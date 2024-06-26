@@ -1,7 +1,7 @@
 # Makefile created by mkmf 2022.01.00
 CPPDEFS = -DINTERNAL_FILE_NML -g -DCLIMATE_NUDGE -DSPMD
 
-OTHERFLAGS = -I$(BUILDROOT)atmos_phys -I$(BUILDROOT)fms/build/.mods
+OTHERFLAGS = -I$(BUILDROOT)atmos_phys -I$(BUILDROOT)fms
 
 TMPFILES = *.o *.mod
 

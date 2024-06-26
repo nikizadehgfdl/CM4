@@ -2,7 +2,9 @@
 
 CPPDEFS = -DINTERNAL_FILE_NML -g -nostdinc
 
-OTHERFLAGS = -I$(BUILDROOT)fms/build/.mods
+TMPFILES = *.o *.mod *.DO_NOT_MODIFY.f90
+
+OTHERFLAGS = -I$(BUILDROOT)fms
 
 include $(MK_TEMPLATE)
 
