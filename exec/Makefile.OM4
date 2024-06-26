@@ -1,0 +1,52 @@
+# Makefile for CM4
+
+BUILDROOT = $(dir $(abspath $(firstword $(MAKEFILE_LIST))))
+
+SRCROOT = $(abspath $(BUILDROOT)../src)/ 
+
+#MK_TEMPLATE = $(BUILDROOT)templates/intel.mk
+ifeq ($(gcc),on)
+  MK_TEMPLATE = $(BUILDROOT)templates/gnu.mk
+else
+  MK_TEMPLATE = $(BUILDROOT)templates/intel.mk
+endif
+ifeq ($(SH),sh)
+  SHELL=/bin/sh
+endif
+OPENMP=t
+include $(MK_TEMPLATE)
+
+SUBMAKEFLAGS = BUILDROOT=$(BUILDROOT) SRCROOT=$(SRCROOT) MK_TEMPLATE=$(MK_TEMPLATE) BLD_TYPE=$(BLD_TYPE)
+
+om4.x: coupler_om4/libcoupler_om4.a atmos_null/libatmos_null.a sis2/libsis2.a mom6/libmom6.a land_null/libland_null.a fms/libFMS.a
+	$(LD) $^ $(LDFLAGS) -Lfms -lFMS -o $@  $(STATIC_LIBS)
+
+fms/libFMS.a:  FORCE
+	$(MAKE) $(SUBMAKEFLAGS) OPENMP=$(OPENMP)  --directory=fms $(@F) 
+
+coupler_om4/libcoupler_om4.a: atmos_null/libatmos_null.a sis2/libsis2.a mom6/libmom6.a land_null/libland_null.a fms/libFMS.a FORCE
+	$(MAKE) $(SUBMAKEFLAGS) OPENMP=$(OPENMP)  --directory=coupler_om4 $(@F)
+
+atmos_null/libatmos_null.a: fms/libFMS.a FORCE
+	$(MAKE) $(SUBMAKEFLAGS) --directory=atmos_null $(@F) 
+
+land_null/libland_null.a: fms/libFMS.a FORCE
+	$(MAKE) $(SUBMAKEFLAGS) --directory=land_null $(@F) 
+
+mom6/libmom6.a: fms/libFMS.a FORCE
+	$(MAKE) $(SUBMAKEFLAGS) OPENMP="" --directory=mom6 $(@F) 
+
+sis2/libsis2.a: mom6/libmom6.a fms/libFMS.a FORCE
+	$(MAKE) $(SUBMAKEFLAGS) OPENMP=$(OPENMP)  --directory=sis2 $(@F) 
+
+FORCE:
+
+clean:
+	$(MAKE) --directory=fms clean
+	$(MAKE) --directory=atmos_null clean
+	$(MAKE) --directory=land_null clean
+	$(MAKE) --directory=mom6 clean
+	$(MAKE) --directory=sis2 clean
+	$(MAKE) --directory=coupler_om4 clean
+clean_all: clean
+	$(RM) *.x

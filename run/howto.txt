@@ -1,0 +1,9 @@
+mysalloc 31
+/usr/bin/srun --ntasks=432 --cpus-per-task=2 --export=ALL,OMP_NUM_THREADS=2 ./fms_cm4_compile.x : --ntasks=2997 --cpus-per-task=1 --export=ALL,OMP_NUM_THREADS=1 ./fms_cm4_compile.x
+=========== cm4.x
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/ncrc/home2/Niki.Zadeh/projects/CM4_github/exec/fms/build/libFMS/.libs/
+/usr/bin/srun --ntasks=432 --cpus-per-task=2 --export=ALL,OMP_NUM_THREADS=2 /ncrc/home2/Niki.Zadeh/projects/CM4_github/exec/cm4.x : --ntasks=2997 --cpus-per-task=1 --export=ALL,OMP_NUM_THREADS=1 /ncrc/home2/Niki.Zadeh/projects/CM4_github/exec/cm4.x | & tee stdout.cm4x.intel22
+
+=========== stellar
+setenv LD_LIBRARY_PATH ${LD_LIBRARY_PATH}:/scratch/cimes/nzadeh/CM4_github/exec/fms/build/libFMS/.libs/
+srun --ntasks=216 --cpus-per-task=2 --export=ALL,OMP_NUM_THREADS=2 /scratch/cimes/nzadeh/CM4_github/exec/cm4.x : --ntasks=648 --cpus-per-task=1 --export=ALL,OMP_NUM_THREADS=1 /scratch/cimes/nzadeh/CM4_github/exec/cm4.x |& tee stdout.stellar.A216x2O648x1
