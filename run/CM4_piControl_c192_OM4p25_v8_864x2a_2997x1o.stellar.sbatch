@@ -14,21 +14,21 @@ atm_ranks=864
 atm_threads=2
 ocn_ranks=2997
 config=${atm_ranks}x${atm_threads}a_${ocn_ranks}x1o
-bar=run2days.$SLURM_JOB_ID
+date=`date '+%Y%m%d_%H%M'`
+bar=run2days.$date.$SLURM_JOB_ID
 
 echo "Hello world, I am running on node $HOSTNAME"
 sleep 2
-date
 ##
 root_dir=/home/$USER/CM4_github
-exp_dir=/scratch/cimes/nzadeh/workDir/CM4_piControl_c192_OM4p25_v8_864x2a_2997x1o
-build_dir=$root_dir/exec.openmp.intel19
+exp_dir=$root_dir/workDir/CM4_piControl_c192_OM4p25_v8_864x2a_2997x1o
+build_dir=$root_dir/exec.$comp
 executable=$build_dir/cm4.x
 ##
 cd $exp_dir
-source $build_dir/templates/stellar.intel19.env
+source $build_dir/templates/stellar.$comp.env
 echo $LD_LIBRARY_PATH
-#use srun-multi ported by Rick Slater
+##use srun-multi ported by Rick Slater
 module load anaconda3/2021.11
 module use /home/rdslater/opt/Modules/modulefiles
 module load srun-multi
