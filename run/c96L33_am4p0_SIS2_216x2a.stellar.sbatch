@@ -8,7 +8,7 @@
 ##
 plat=stellar
 comp=intel19
-target=prod
+target=prod-openmp
 atm_ranks=216
 atm_threads=2
 ocn_ranks=0
@@ -21,7 +21,7 @@ sleep 2
 ##
 root_dir=/home/$USER/CM4_github
 exp_dir=$root_dir/workDir/c96L33_am4p0_SIS2_216x2a
-build_dir=$root_dir/exec.$comp
+build_dir=$root_dir/exec.$plat-$comp.$target
 executable=$build_dir/cm4.x
 ##
 cd $exp_dir
@@ -38,7 +38,7 @@ export NC_BLKSZ=1M
 #export MALLOC_MMAP_MAX_=0
 #export MALLOC_TRIM_THRESHOLD_=536870912
 ## necessary for OpenMP when using Intel
-#export SLURM_CPU_BIND=verbose
+export SLURM_CPU_BIND=verbose
 
 runCommand="srun --ntasks=$atm_ranks --export=ALL,OMP_NUM_THREADS=$atm_threads --cpus-per-task=$atm_threads --cpu-bind=cores $executable"
 echo $runCommand

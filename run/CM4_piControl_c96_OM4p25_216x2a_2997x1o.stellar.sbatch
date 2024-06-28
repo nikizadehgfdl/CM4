@@ -13,21 +13,21 @@ atm_ranks=216
 atm_threads=2
 ocn_ranks=2997
 config=${atm_ranks}x${atm_threads}a_${ocn_ranks}x1o
-bar=run2days.$SLURM_JOB_ID
+date=`date '+%Y%m%d_%H%M'`
+bar=run2days.$date.$SLURM_JOB_ID
 
 echo "Hello world, I am running on node $HOSTNAME"
 sleep 2
-date
 ##
 root_dir=/home/$USER/CM4_github
-exp_dir=/scratch/cimes/nzadeh/workDir/CM4_piControl_C_216x2a_2997x1o
-build_dir=$root_dir/exec.openmp.intel19
+exp_dir=$root_dir/workDir/CM4_piControl_C_216x2a_2997x1o
+build_dir=$root_dir/exec.$plat-$comp.$target
 executable=$build_dir/cm4.x
 ##
 cd $exp_dir
-source $build_dir/templates/stellar.intel19.env
+source $build_dir/templates/stellar.$comp.env
 echo $LD_LIBRARY_PATH
-#use srun-multi ported by Rick Slater
+##use srun-multi ported by Rick Slater
 module load anaconda3/2021.11
 module use /home/rdslater/opt/Modules/modulefiles
 module load srun-multi
@@ -39,7 +39,7 @@ export NC_BLKSZ=1M
 #export MPICH_MPIIO_CB_ALIGN=2
 #export MALLOC_MMAP_MAX_=0
 #export MALLOC_TRIM_THRESHOLD_=536870912
-#export SLURM_CPU_BIND=verbose
+export SLURM_CPU_BIND=verbose
 
 runCommand="srun-multi --ntasks=$atm_ranks --export=ALL,OMP_NUM_THREADS=$atm_threads --cpus-per-task=$atm_threads $executable : --ntasks=$ocn_ranks --cpus-per-task=1 --export=ALL,OMMP_NUM_THREADS=1 $executable"
 

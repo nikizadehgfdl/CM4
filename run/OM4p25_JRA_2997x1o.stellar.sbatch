@@ -7,22 +7,21 @@
 #SBATCH --qos=cimes-short
 ##
 plat=stellar
-comp=intel22
+comp=intel19
 target=prod
 atm_ranks=0
 atm_threads=1
 ocn_ranks=2997
 config=${ocn_ranks}x1o
-bar=run2days.$SLURM_JOB_ID
+date=`date '+%Y%m%d_%H%M'`
+bar=run2days.$date.$SLURM_JOB_ID
 
 echo "Hello world, I am running on node $HOSTNAME"
 sleep 2
-date
 ##
 root_dir=/home/$USER/CM4_github
-exp_dir=/scratch/cimes/nzadeh/workDir/OM4p25_JRA55do1.5_r6_cycle1_2997x1o
-build_dir=$root_dir/exec
-#executable=/home/nzadeh/platforms/mom6/builds/build/stellar-intel22/ocean_ice/prod/MOM6SIS2
+exp_dir=$root_dir/workDir/OM4p25_JRA55do1.5_r6_cycle1_2997x1o
+build_dir=$root_dir/exec.$plat-$comp.$target
 executable=$build_dir/om4.x
 ##
 cd $exp_dir
@@ -39,7 +38,7 @@ export NC_BLKSZ=1M
 #export MALLOC_MMAP_MAX_=0
 #export MALLOC_TRIM_THRESHOLD_=536870912
 ## necessary for OpenMP when using Intel
-#export SLURM_CPU_BIND=verbose
+export SLURM_CPU_BIND=verbose
 
 runCommand="srun --ntasks=$ocn_ranks --export=ALL --cpus-per-task=1 --cpu-bind=cores $executable"
 echo $runCommand
