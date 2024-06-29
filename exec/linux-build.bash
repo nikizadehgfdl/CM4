@@ -1,12 +1,14 @@
 #!/bin/bash -x                                     
 machine_name="stellar" 
 platform="intel19"
-target="prod"        
-flavor="mom6sis2"
+target="prod-openmp"        
+flavor="cm4"
 
 usage()
 {
-    echo "usage: linux-build.bash -m stellar -p intel19 -t prod -f mom6sis2"
+    echo "usage: linux-build.bash -m stellar -p intel19 -t prod-openmp -f cm4"
+    echo "usage: linux-build.bash -m stellar -p intel19 -t prod -f om4"
+    echo "usage: linux-build.bash -m ncrc5   -p intel23cl -t prod -f om4"
 }
 
 # parse command-line arguments
@@ -24,7 +26,7 @@ done
 rootdir=`dirname $0`
 abs_rootdir=`cd $rootdir && pwd`
 
-makeflags="NETCDF=3"
+makeflags="PLAT=$machine_name"
 
 if [[ "$target" =~ "openmp" ]] ; then 
    makeflags="$makeflags OPENMP=1" 
@@ -60,7 +62,7 @@ pushd $execdir
 
 #load modules              
 source $MODULESHOME/init/bash
-source templates/$machine_name.$platform.env 
+source templates/$machine_name/$platform.env 
 module list |& tee make.stdout
 #source $rootdir/$machine_name/$platform.env
 #. $rootdir/$machine_name/$platform.env

@@ -8,7 +8,7 @@ SRCROOT = $(abspath $(BUILDROOT)../src)/
 ifeq ($(gcc),on)
   MK_TEMPLATE = $(BUILDROOT)templates/gnu.mk
 else
-  MK_TEMPLATE = $(BUILDROOT)templates/intel.mk
+  MK_TEMPLATE = $(BUILDROOT)templates/$(PLAT)/intel.mk
 endif
 ifeq ($(SH),sh)
   SHELL=/bin/sh
