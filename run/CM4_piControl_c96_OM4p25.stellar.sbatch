@@ -1,5 +1,5 @@
 #!/bin/env bash
-#SBATCH --time=00:40:00
+#SBATCH --time=02:40:00
 #SBATCH --ntasks=3584
 #SBATCH --mem-per-cpu=4000M
 #SBATCH --exclusive
@@ -14,7 +14,7 @@ atm_threads=2
 ocn_ranks=2997
 config=${atm_ranks}x${atm_threads}a_${ocn_ranks}x1o
 date=`date '+%Y%m%d_%H%M'`
-bar=run2days.$date.$SLURM_JOB_ID
+bar=run31days.$date.$SLURM_JOB_ID
 
 echo "Hello world, I am running on node $HOSTNAME"
 sleep 2
@@ -25,7 +25,7 @@ build_dir=$root_dir/exec.$plat-$comp.$target
 executable=$build_dir/cm4.x
 ##
 cd $exp_dir
-source $build_dir/templates/stellar.$comp.env
+source $build_dir/templates/$plat/$comp.env
 echo $LD_LIBRARY_PATH
 ##use srun-multi ported by Rick Slater
 module load anaconda3/2021.11

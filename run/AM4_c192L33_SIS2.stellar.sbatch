@@ -1,6 +1,6 @@
 #!/bin/env bash
-#SBATCH --time=00:30:00
-#SBATCH --ntasks=432
+#SBATCH --time=01:30:00
+#SBATCH --ntasks=864
 #SBATCH --mem-per-cpu=4000M
 #SBATCH --exclusive
 #SBATCH --account=gfdlh
@@ -9,23 +9,23 @@
 plat=stellar
 comp=intel19
 target=prod-openmp
-atm_ranks=216
+atm_ranks=432
 atm_threads=2
 ocn_ranks=0
 config=${atm_ranks}x${atm_threads}a
 date=`date '+%Y%m%d_%H%M'`
-bar=run2days.$date.$SLURM_JOB_ID
+bar=run31days.$date.$SLURM_JOB_ID
 
 echo "Hello world, I am running on node $HOSTNAME"
 sleep 2
 ##
 root_dir=/home/$USER/CM4_github
-exp_dir=$root_dir/workDir/c96L33_am4p0_SIS2_216x2a
+exp_dir=$root_dir/workDir/AM4_c192L33_SIS2
 build_dir=$root_dir/exec.$plat-$comp.$target
 executable=$build_dir/cm4.x
 ##
 cd $exp_dir
-source $build_dir/templates/stellar.$comp.env
+source $build_dir/templates/stellar/$comp.env
 echo $LD_LIBRARY_PATH
 
 #module load anaconda3/2021.11
