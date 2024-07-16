@@ -43,11 +43,17 @@ includes a single version of the publically available GFDL model components on g
 The following build process was tested for CM4 and OM4 with Intel compiler.
 
 ### To build CM4
+#### Stellar
 ```
 cd exec ; ./linux-build.bash -m stellar -p intel19 -t prod-openmp -f cm4
 ```
 
 ### To build OM4
+#### Stellar
+```
+cd exec ; ./linux-build.bash -m stellar -p intel19 -t prod-openmp -f om4
+```
+#### ncrc5
 ```
 cd exec ; ./linux-build.bash -m ncrc5  -p intel23cl -t prod-openmp -f om4
 ```
@@ -61,7 +67,8 @@ cd exec ; ./linux-build.bash -m ncrc5  -p intel23cl -t prod-openmp -f om4
 ## Running CM4
 
 Users need to obtain the required input data for running the experiments. 
-It is not the objective of this fork to provide the user with the data.
+It is not the objective of this fork to provide users with the data.
+
 There are some sample slurm scripts provided under [run](run) directory
 to help users start experimenting after obtaining the proper input data.
 
