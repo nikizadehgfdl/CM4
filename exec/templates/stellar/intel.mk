@@ -157,6 +157,8 @@ LDFLAGS_COVERAGE = -prof-gen=srcpos
 LIBS := $(shell pkg-config --libs yaml-0.1) $(shell nc-config --libs)
 LIBS += -L/usr/local/hdf5/intel-19.1/openmpi-4.1.0/1.10.6/lib64
 #LIBS += -L/usr/local/hdf5/intel-2021.1/openmpi-4.1.0/1.10.6/lib64
+#LIBS += -L/usr/local/netcdf/oneapi-2024.2/hdf5-1.14.4/openmpi-4.1.6/4.9.2/lib64
+#LIBS += -L/usr/local/hdf5/oneapi-2024.2/openmpi-4.1.6/1.14.4/lib64/
 LIBS += -lnetcdf -lnetcdff -lhdf5_fortran -lhdf5_hl -lhdf5
 # Get compile flags based on target macros.
 ifdef REPRO

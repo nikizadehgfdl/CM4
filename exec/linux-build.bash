@@ -6,9 +6,10 @@ flavor="cm4"
 
 usage()
 {
-    echo "usage: linux-build.bash -m stellar -p intel19 -t prod-openmp -f cm4"
-    echo "usage: linux-build.bash -m stellar -p intel19 -t prod -f om4"
-    echo "usage: linux-build.bash -m ncrc5   -p intel23cl -t prod -f om4"
+    echo "usage: ./linux-build.bash -m stellar -p intel19 -t prod-openmp -f cm4"
+    echo "usage: ./linux-build.bash -m stellar -p intel19 -t prod -f om4"
+    echo "usage: ./linux-build.bash -m ncrc5   -p intel23cl -t prod -f om4"
+    echo "usage: ./linux-build.bash -m stellar -p nvhpc21.5 -t repro -f om4"
 }
 
 # parse command-line arguments

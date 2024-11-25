@@ -20,7 +20,7 @@ echo "Hello world, I am running on node $HOSTNAME"
 sleep 2
 ##
 root_dir=/home/$USER/CM4_github
-exp_dir=$root_dir/workDir/CM4_piControl_C_216x2a_2997x1o
+exp_dir=$root_dir/workDir/CM4_piControl_c96_OM4p25
 build_dir=$root_dir/exec.$plat-$comp.$target
 executable=$build_dir/cm4.x
 ##
@@ -41,7 +41,8 @@ export NC_BLKSZ=1M
 #export MALLOC_TRIM_THRESHOLD_=536870912
 export SLURM_CPU_BIND=verbose
 
-runCommand="srun-multi --ntasks=$atm_ranks --export=ALL,OMP_NUM_THREADS=$atm_threads --cpus-per-task=$atm_threads $executable : --ntasks=$ocn_ranks --cpus-per-task=1 --export=ALL,OMMP_NUM_THREADS=1 $executable"
+#runCommand="srun-multi --ntasks=$atm_ranks --export=ALL,OMP_NUM_THREADS=$atm_threads --cpus-per-task=$atm_threads $executable : --ntasks=$ocn_ranks --cpus-per-task=1 --export=ALL,OMMP_NUM_THREADS=1 $executable"
+runCommand="srun --ntasks=$atm_ranks --export=ALL,OMP_NUM_THREADS=$atm_threads --cpus-per-task=$atm_threads --cpu-bind=cores $executable : --ntasks=$ocn_ranks --cpus-per-task=1 --export=ALL,OMMP_NUM_THREADS=1 --cpu-bind=cores $executable"
 
 echo $runCommand
 ${runCommand} | tee stdout.$plat-$comp.$target.$config.$bar

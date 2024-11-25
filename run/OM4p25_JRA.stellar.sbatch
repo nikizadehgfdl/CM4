@@ -7,7 +7,7 @@
 #SBATCH --qos=cimes-short
 ##
 plat=stellar
-comp=intel19
+comp=intel19_openmpi
 target=prod-openmp
 atm_ranks=0
 atm_threads=1
@@ -34,11 +34,13 @@ echo $LD_LIBRARY_PATH
 #which srun-multi
 export KMP_STACKSIZE=512m
 export NC_BLKSZ=1M
-#export MPICH_MPIIO_CB_ALIGN=2
-#export MALLOC_MMAP_MAX_=0
-#export MALLOC_TRIM_THRESHOLD_=536870912
+export MPICH_MPIIO_CB_ALIGN=2
+export MALLOC_MMAP_MAX_=0
+export MALLOC_TRIM_THRESHOLD_=536870912
 ## necessary for OpenMP when using Intel
 export SLURM_CPU_BIND=verbose
+
+export HYPT=off
 
 runCommand="srun --ntasks=$ocn_ranks --export=ALL --cpus-per-task=1 --cpu-bind=cores $executable"
 echo $runCommand
