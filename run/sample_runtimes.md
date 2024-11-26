@@ -17,6 +17,13 @@ CM4.0_c96_OM4p25 216x2a_2997x1o     | gaea.c5 | 1015 | 621
 CM4.0_c192_OM4p25_v8 864x2a_2997x1o | stellar | 1214 | 1298
 CM4.0_c192_OM4p25_v8 864x2a_2997x1o | gaea.c5 | 1499 | 768
 
+# Scaling issue on Stellar beyond 10 nodes
+
+![AM4_c192_scaling_stellar](https://github.com/user-attachments/assets/37163607-a5d1-48ba-b367-a72aebb17a65)
+
+![OM4p25_scaling_stellar](https://github.com/user-attachments/assets/39c6ca02-ea85-4e04-8f8b-f4c660a4146a)
+
+
 # details
 
 ## Stellar
