@@ -7,14 +7,14 @@
 #SBATCH --qos=cimes-short
 ##
 plat=stellar
-comp=intel19
+comp=intel19_openmpi
 target=prod-openmp
 atm_ranks=216
 atm_threads=2
 ocn_ranks=2997
 config=${atm_ranks}x${atm_threads}a_${ocn_ranks}x1o
 date=`date '+%Y%m%d_%H%M'`
-bar=run31days.$date.$SLURM_JOB_ID
+bar=run31days.emptyDiag.$date.$SLURM_JOB_ID
 
 echo "Hello world, I am running on node $HOSTNAME"
 sleep 2
@@ -27,11 +27,6 @@ executable=$build_dir/cm4.x
 cd $exp_dir
 source $build_dir/templates/$plat/$comp.env
 echo $LD_LIBRARY_PATH
-##use srun-multi ported by Rick Slater
-module load anaconda3/2021.11
-module use /home/rdslater/opt/Modules/modulefiles
-module load srun-multi
-which srun-multi
 ## necessary for OpenMP when using Intel
 export KMP_STACKSIZE=512m
 export NC_BLKSZ=1M
@@ -40,12 +35,17 @@ export NC_BLKSZ=1M
 #export MALLOC_MMAP_MAX_=0
 #export MALLOC_TRIM_THRESHOLD_=536870912
 export SLURM_CPU_BIND=verbose
+export HYPT=off
 
-#runCommand="srun-multi --ntasks=$atm_ranks --export=ALL,OMP_NUM_THREADS=$atm_threads --cpus-per-task=$atm_threads $executable : --ntasks=$ocn_ranks --cpus-per-task=1 --export=ALL,OMMP_NUM_THREADS=1 $executable"
 runCommand="srun --ntasks=$atm_ranks --export=ALL,OMP_NUM_THREADS=$atm_threads --cpus-per-task=$atm_threads --cpu-bind=cores $executable : --ntasks=$ocn_ranks --cpus-per-task=1 --export=ALL,OMMP_NUM_THREADS=1 --cpu-bind=cores $executable"
 
 echo $runCommand
-${runCommand} | tee stdout.$plat-$comp.$target.$config.$bar
+echo "Hello world, I am running on node $HOSTNAME" >> stdout.$plat-$comp.$target.$config.$bar
+echo $runCommand >> stdout.$plat-$comp.$target.$config.$bar
+echo "================" >> stdout.$plat-$comp.$target.$config.$bar
+
+#Run it
+${runCommand} | tee -a stdout.$plat-$comp.$target.$config.$bar
 
 mv ocean.stats ocean.stats.$plat-$comp.$target.$config.$bar
 

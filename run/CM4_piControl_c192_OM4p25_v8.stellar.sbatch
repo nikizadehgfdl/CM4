@@ -35,6 +35,7 @@ export NC_BLKSZ=1M
 #export MALLOC_MMAP_MAX_=0
 #export MALLOC_TRIM_THRESHOLD_=536870912
 export SLURM_CPU_BIND=verbose
+export HYPT=off
 
 runCommand="srun --ntasks=$atm_ranks --export=ALL,OMP_NUM_THREADS=$atm_threads --cpus-per-task=$atm_threads --cpu-bind=cores $executable : --ntasks=$ocn_ranks --cpus-per-task=1 --export=ALL,OMMP_NUM_THREADS=1 --cpu-bind=cores $executable"
 
