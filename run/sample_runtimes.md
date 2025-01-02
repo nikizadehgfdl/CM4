@@ -1,9 +1,36 @@
 # Some Model Clocks for 1 month runs
 
+config         |platform | ATM(secs)| OCN(secs) 
+------------------------------------|---------|------|-----------       
+OM4p25 2997x1o                      | stellar |235   |747  
+OM4p25 2997x1o                      |gaea.c5  |47    |364
+||
+AM4.0_c96L33 216x2a                 | stellar | 579  | 
+AM4.0_c96L33 216x2a                 | gaea.c5 | 525  |
+||
+AM4.0_c192L33 864x2a                | stellar | 848  |
+AM4.0_c192L33 864x2a                | gaea.c5 | 752  |
+||
+CM4.0_c96_OM4p25 216x2a_2997x1o     | stellar | 977  | 1033
+CM4.0_c96_OM4p25 216x2a_2997x1o     | gaea.c5 | 1015 | 621
+||
+CM4.0_c192_OM4p25_v8 864x2a_2997x1o | stellar | 1214 | 1298
+CM4.0_c192_OM4p25_v8 864x2a_2997x1o | gaea.c5 | 1499 | 768
+
+# Scaling issue on Stellar beyond 10 nodes
+
+![AM4_c192_scaling_stellar](https://github.com/user-attachments/assets/37163607-a5d1-48ba-b367-a72aebb17a65)
+
+![OM4p25_scaling_stellar](https://github.com/user-attachments/assets/39c6ca02-ea85-4e04-8f8b-f4c660a4146a)
+
+
+# details
+
 ## Stellar
 
 ### OMIP_OM4p25
 ```
+/home/nzadeh/CM4_github/workDir
 [nzadeh@stellar-amd OM4p25_JRA55do1.5_r6_cycle1_2997x1o]$ clocks stdout.stellar-intel19_openmpi.prod-openmp.2997x1o.run31days.emptyDiag.20240812_1946.1348078
 Main loop      1    983.922229    983.922959    983.922443      0.000136  0.933     0     0  2996
 ATM         1488    229.210424    235.404031    234.240144      1.173888  0.222     0     0  2996
@@ -41,7 +68,7 @@ ATM          744    578.443331    578.829792    578.618176      0.065937  0.867 
 [nzadeh@stellar-amd AM4_c192L33_SIS2]$ clocks stdout.stellar-intel19_openmpi.prod-openmp.864x2a.run31days.HYPToff.20240810_1831.1345036
 Main loop      1    848.410669    848.411002    848.410908      0.000083  0.614     0     0   863
 ATM          744    847.971589    848.094738    848.038985      0.024573  0.614     0     0   863
-
+216x2a_2997x1o
 [nzadeh@stellar-amd AM4_c192L33_SIS2]$ clocks stdout.stellar-intel19_openmpi.prod-openmp.864x2a.run31days.noHYPToff.20240809_1941.1342689
 Main loop      1    978.683449    978.684125    978.683723      0.000152  0.824     0     0   863
 ATM          744    978.205260    978.349430    978.296027      0.027450  0.824     0     0   863
@@ -67,6 +94,7 @@ OCN         2232   1297.708286   1298.465174   1298.111268      0.137222  0.752 
 
 ### OMIP_OM4p25
 ```
+/ncrc/home2/Niki.Zadeh/projects/CM4_github/workdirs
 Niki.Zadeh@gaea58:~/projects/CM4_github> clocks workdirs/OM4p25_JRA55do1.5_r6_cycle1_2997x1o/stdout.ncrc5-intel23cl.prod-openmp.2997x1o.run31days.emptyDiag.20240702_1234.135054097
 Main loop      1    412.499833    412.500450    412.499958      0.000109  0.478     0     0  2996
 ATM         1488     41.506524     47.408294     46.659599      1.165670  0.054     0     0  2996
@@ -85,6 +113,13 @@ ATM          744    524.534193    524.839845    524.613928      0.064055  0.610 
 Niki.Zadeh@gaea58:~/projects/CM4_github> clocks workdirs/AM4_c192L33_SIS2/stdout.ncrc5-intel23cl.prod-openmp.864x2a.run31days.emptyDiag.20240711_1750.135065524
 Main loop      1    752.513947    752.514020    752.513984      0.000024  0.613     0     0   863
 ATM          744    752.184532    752.245948    752.215852      0.011825  0.612     0     0   863
+```
+### CM4.0_c96_OM4p25
+```
+Niki.Zadeh@gaea58:~/projects/CM4_github> clocks workdirs/CM4_piControl_C_216x2a_2997x1o/stdout.ncrc5-intel23cl.prod-openmp.216x2a_2997x1o.run31days.20240701_1312.135049731
+Main loop      1   1168.083738   1168.083866   1168.083785      0.000031  0.774     0     0  3212
+ATM         2976    930.867274   1015.661759   1003.036980     19.822936  0.664     0     0   215
+OCN         1488    620.820223    621.126439    620.995139      0.054093  0.411     0   216  3212
 ```
 
 ### CM4_piControl_c192_OM4p25_v8
