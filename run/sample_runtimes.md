@@ -1,21 +1,25 @@
 # Some Model Clocks for 1 month runs
 
-config         |platform | ATM(secs)| OCN(secs) 
-------------------------------------|---------|------|-----------       
-OM4p25 2997x1o                      | stellar |235   |747  
-OM4p25 2997x1o                      |gaea.c5  |47    |364
+config                              |platform                       | ATM(secs)| OCN(secs) 
+------------------------------------|-------------------------------|------|-----------       
+OM4p25 2997x1o                      | gaea.c5-intelcl23             |47    |364
+OM4p25 2997x1o                      | stellar-intelcl19_openmpi     |235   |747  
+OM4p25 2997x1o                      | tiger3-inteloneapi24_openmpi  |107   |376  
+OM4p25 2997x1o                      | tiger3-inteloneapi24_openmpiAVX2  |111   |374  
 ||
-AM4.0_c96L33 216x2a                 | stellar | 579  | 
-AM4.0_c96L33 216x2a                 | gaea.c5 | 525  |
+AM4.0_c96L33 216x2a                 | gaea.c5-intelcl23             | 525  |
+AM4.0_c96L33 216x2a                 | stellar-intelcl19_openmpi     | 579  | 
+AM4.0_c96L33 216x2a                 | tiger3-inteloneapi24_openmpi  | 435  | 
 ||
-AM4.0_c192L33 864x2a                | stellar | 848  |
-AM4.0_c192L33 864x2a                | gaea.c5 | 752  |
+AM4.0_c192L33 864x2a                | gaea.c5-intelcl23             | 752  |
+AM4.0_c192L33 864x2a                | stellar-intelcl19_openmpi     | 848  |
+AM4.0_c192L33 864x2a                | tiger3-inteloneapi24_openmpi  | 589  |
 ||
-CM4.0_c96_OM4p25 216x2a_2997x1o     | stellar | 977  | 1033
-CM4.0_c96_OM4p25 216x2a_2997x1o     | gaea.c5 | 1015 | 621
+CM4.0_c96_OM4p25 216x2a_2997x1o     | gaea.c5-intelcl23             | 1015 | 621
+CM4.0_c96_OM4p25 216x2a_2997x1o     | stellar-intelcl19_openmpi     | 977  | 1033
 ||
-CM4.0_c192_OM4p25_v8 864x2a_2997x1o | stellar | 1214 | 1298
-CM4.0_c192_OM4p25_v8 864x2a_2997x1o | gaea.c5 | 1499 | 768
+CM4.0_c192_OM4p25_v8 864x2a_2997x1o | gaea.c5-intelcl23             | 1499 | 768
+CM4.0_c192_OM4p25_v8 864x2a_2997x1o | stellar-intelcl19_openmpi     | 1214 | 1298
 
 # Scaling issue on Stellar beyond 10 nodes
 
@@ -50,6 +54,15 @@ OCN          744    954.498741    955.090275    954.707132      0.084430  0.771 
 Main loop      1   7354.787554   7354.787914   7354.787777      0.000061  0.992     0     0  2996
 ATM         1488   2171.738525   2260.904314   2201.614016     17.729141  0.297     0     0  2996
 OCN          744   5038.474957   5080.113072   5064.213796     10.541957  0.683     0     0  2996
+
+[nzadeh@tiger3 OM4p25_JRA55do1.5_r6_cycle1_2997x1o]$ clocks stdout.tiger3-inteloneapi24_openmpi.repro.2997x1o.run31days.emptyDiag.20250102_1738.225137
+Main loop      1    489.450364    489.450646    489.450535      0.000059  0.965     0     0  2996
+ATM         1488    107.644678    112.271648    111.035069      0.798130  0.219     0     0  2996
+OCN          744    375.628779    376.147477    375.913411      0.112966  0.741     0     0  2996
+[nzadeh@tiger3 OM4p25_JRA55do1.5_r6_cycle1_2997x1o]$ clocks stdout.tiger3-inteloneapi24_openmpi.repro-avx2.2997x1o.run31days.emptyDiag.20250113_1655.366365
+Main loop      1    487.312652    487.312885    487.312830      0.000046  0.965     0     0  2996
+ATM         1488    106.578191    111.255229    110.016180      0.807227  0.218     0     0  2996
+OCN          744    374.331923    374.863779    374.617072      0.112964  0.742     0     0  2996
 ```
 
 ### AM4.0_c96L33
@@ -62,6 +75,10 @@ ATM          744   3781.401426   3786.971934   3783.998501      1.222567  0.964 
 Main loop      1    579.398382    579.398655    579.398574      0.000110  0.868     0     0   215
 ATM          744    578.443331    578.829792    578.618176      0.065937  0.867     0     0   215
 
+[nzadeh@tiger3 AM4_c96L33_SIS2]$ clocks stdout.tiger3-inteloneapi24_openmpi.prod-openmp.216x2a.run31days.HYPToff.20250113_1237.364012
+Main loop      1    434.771887    434.772011    434.771964      0.000049  0.925     0     0   215
+ATM          744    433.967180    434.255129    434.145192      0.046722  0.924     0     0   215
+
 ```
 ### AM4.0_c192L33
 ```
@@ -72,6 +89,11 @@ ATM          744    847.971589    848.094738    848.038985      0.024573  0.614 
 [nzadeh@stellar-amd AM4_c192L33_SIS2]$ clocks stdout.stellar-intel19_openmpi.prod-openmp.864x2a.run31days.noHYPToff.20240809_1941.1342689
 Main loop      1    978.683449    978.684125    978.683723      0.000152  0.824     0     0   863
 ATM          744    978.205260    978.349430    978.296027      0.027450  0.824     0     0   863
+
+[nzadeh@tiger3 AM4_c192L33_SIS2]$ clocks stdout.tiger3-inteloneapi24_openmpi.prod-openmp.864x2a.run31days.HYPToff.20250113_1332.364076
+Main loop      1    589.523585    589.523702    589.523637      0.000033  0.947     0     0   863
+ATM          744    589.168685    589.333299    589.296286      0.029273  0.946     0     0   863
+
 ```
 
 ### CM4.0_c96_OM4p25
