@@ -10,6 +10,7 @@ OM4p25 2997x1o                      | tiger3-inteloneapi24_openmpiAVX2  |111   |
 AM4.0_c96L33 216x2a                 | gaea.c5-intelcl23             | 525  |
 AM4.0_c96L33 216x2a                 | stellar-intelcl19_openmpi     | 579  | 
 AM4.0_c96L33 216x2a                 | tiger3-inteloneapi24_openmpi  | 435  | 
+AM4.0_c96L33 216x2a                 | tiger3-inteloneapi24_openmpiAVx2  | 439  | 
 ||
 AM4.0_c192L33 864x2a                | gaea.c5-intelcl23             | 752  |
 AM4.0_c192L33 864x2a                | stellar-intelcl19_openmpi     | 848  |
